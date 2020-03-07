@@ -1,0 +1,31 @@
+st-datepicker-nav {
+    width: 300px;
+    cursor: pointer;
+    .nav {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        align-items: center;
+        align-self: stretch;
+
+        .arrow-button {
+            opacity: .5;
+            padding: 5px 15px;
+        }
+
+        .current-date {
+            flex-grow: 1;
+            font-size: 14px;
+            font-weight: 600;
+            font-stretch: normal;
+            font-style: normal;
+            line-height: 1.71;
+            letter-spacing: normal;
+            text-align: center;
+            color: rgba(0, 0, 0, 0.87);
+            align-items: center;
+            display: flex;
+            justify-content: center;
+        }
+    }
+}

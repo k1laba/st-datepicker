@@ -1,0 +1,63 @@
+st-datepicker-inner {
+    .datepicker-inner {
+        .nav {
+            background-image: linear-gradient(rgba(222, 222, 222, .15), #fff);
+        }
+        .week-names,
+        .dates {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            align-items: center;
+
+            span {
+                width: 40px;
+                height: 40px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 12px;
+                font-weight: 600;
+                font-stretch: normal;
+                font-style: normal;
+                line-height: normal;
+                letter-spacing: normal;
+                text-align: center;
+                color: rgba(0, 0, 0, 0.87);
+                cursor: pointer;
+
+                &.active {
+                    background-color: #1bd4aa;
+                    border-radius: 50%;
+                    color: #fff;
+                }
+
+                &.in-range {
+                    background-color: #1BD4AAC0;
+                    border-radius: 0;
+                    color: #fff;
+                }
+
+                &.is-start {
+                    border-top-left-radius: 50%;
+                    border-bottom-left-radius: 50%;
+                    color: #fff;
+                    background-color: #1BD4AAC0;
+                }
+
+                &.is-end {
+                    border-top-right-radius: 50%;
+                    border-bottom-right-radius: 50%;
+                    color: #fff;
+                    background-color: #1BD4AAC0;
+                }
+            }
+        }
+
+        .header {
+            span {
+                color: rgba(0, 0, 0, 0.38);
+            }
+        }
+    }
+}

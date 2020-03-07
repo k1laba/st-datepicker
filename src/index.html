@@ -4,27 +4,48 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
-  <title>Stencil Component Starter</title>
+  <title>St-datepicker</title>
 
   <style>
     html * {
-        box-sizing: border-box;
+      box-sizing: border-box;
     }
+
     body {
-        margin: 0;
-        padding: 0;
-      }
+      margin: 0;
+      padding: 0;
+      background: #ccc;
+    }
+
+    .flex-container {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .flex-container st-datepicker {
+      z-index: 1001;
+    }
   </style>
 
-  <script type="module" src="/build/st-datepicker.esm.js"></script>
-  <script nomodule src="/build/st-datepicker.js"></script>
+  <script type="module" src="build/st-datepicker.esm.js"></script>
+  <script nomodule src="build/st-datepicker.js"></script>
 
 </head>
 
 <body>
 
-  <st-datepicker></st-datepicker>
+  <div class="flex-container">
+    <st-datepicker></st-datepicker>
+    <st-daterangepicker></st-daterangepicker>
+  </div>
+  <div class="flex-container result-wrapper">
+    <p class="date-result"></p>
+    <p class="range-result"></p>
+  </div>
+  <script>
 
+  </script>
 </body>
 
 </html>

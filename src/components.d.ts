@@ -9,10 +9,10 @@
 import { HTMLStencilElement, JSXBase } from '@stencil/core/internal';
 import {
   IDatePartModel,
-} from './components/st-date-picker/models/date-part.model';
+} from './models/date-part.model';
 import {
-  IDatePickerDay,
-} from './components/st-date-picker/models/date-picker-day.model';
+  IDatePickerModel,
+} from './models/date-picker.model';
 
 export namespace Components {
   interface StDatePartSelector {
@@ -24,6 +24,7 @@ export namespace Components {
   }
   interface StDatepicker {
     'getDate': () => Promise<Date>;
+    'open': boolean;
     'selectedDay': Date;
   }
   interface StDatepickerFooter {
@@ -35,11 +36,34 @@ export namespace Components {
     'onDateChange': (date: Date) => void;
   }
   interface StDatepickerInner {
-    'currentDay': Date;
     'currentMonth': Date;
-    'datepickerDates': IDatePickerDay[];
+    'datepickerDates': IDatePickerModel[];
     'onDateSelect': (date: Date) => void;
-    'onMonthChange': (date:Date) => void;
+    'onMonthChange': (date: Date) => void;
+    'resolveDayView': (date: IDatePickerModel) => string;
+  }
+  interface StDatepickerNav {
+    'currentDate': Date;
+    'format': string;
+    'navStep': string;
+    'onDateChange': (date: Date) => void;
+    'toggleView': () => void;
+  }
+  interface StDatepickerTopnav {
+    'onDateChange': (date: Date) => void;
+    'selectedDay': Date;
+    'toggleView': () => void;
+  }
+  interface StDaterangepicker {
+    'dateEnd'?: Date;
+    'dateStart'?: Date;
+    'getEndDate': () => Promise<Date>;
+    'getStartDate': () => Promise<Date>;
+    'open': boolean;
+  }
+  interface StDaterangepickerHeader {
+    'dateEnd'?: Date;
+    'dateStart'?: Date;
   }
 }
 
@@ -75,12 +99,40 @@ declare global {
     prototype: HTMLStDatepickerInnerElement;
     new (): HTMLStDatepickerInnerElement;
   };
+
+  interface HTMLStDatepickerNavElement extends Components.StDatepickerNav, HTMLStencilElement {}
+  var HTMLStDatepickerNavElement: {
+    prototype: HTMLStDatepickerNavElement;
+    new (): HTMLStDatepickerNavElement;
+  };
+
+  interface HTMLStDatepickerTopnavElement extends Components.StDatepickerTopnav, HTMLStencilElement {}
+  var HTMLStDatepickerTopnavElement: {
+    prototype: HTMLStDatepickerTopnavElement;
+    new (): HTMLStDatepickerTopnavElement;
+  };
+
+  interface HTMLStDaterangepickerElement extends Components.StDaterangepicker, HTMLStencilElement {}
+  var HTMLStDaterangepickerElement: {
+    prototype: HTMLStDaterangepickerElement;
+    new (): HTMLStDaterangepickerElement;
+  };
+
+  interface HTMLStDaterangepickerHeaderElement extends Components.StDaterangepickerHeader, HTMLStencilElement {}
+  var HTMLStDaterangepickerHeaderElement: {
+    prototype: HTMLStDaterangepickerHeaderElement;
+    new (): HTMLStDaterangepickerHeaderElement;
+  };
   interface HTMLElementTagNameMap {
     'st-date-part-selector': HTMLStDatePartSelectorElement;
     'st-datepicker': HTMLStDatepickerElement;
     'st-datepicker-footer': HTMLStDatepickerFooterElement;
     'st-datepicker-header': HTMLStDatepickerHeaderElement;
     'st-datepicker-inner': HTMLStDatepickerInnerElement;
+    'st-datepicker-nav': HTMLStDatepickerNavElement;
+    'st-datepicker-topnav': HTMLStDatepickerTopnavElement;
+    'st-daterangepicker': HTMLStDaterangepickerElement;
+    'st-daterangepicker-header': HTMLStDaterangepickerHeaderElement;
   }
 }
 
@@ -94,6 +146,7 @@ declare namespace LocalJSX {
   }
   interface StDatepicker {
     'onDateChanged'?: (event: CustomEvent<any>) => void;
+    'open'?: boolean;
     'selectedDay'?: Date;
   }
   interface StDatepickerFooter {
@@ -105,11 +158,33 @@ declare namespace LocalJSX {
     'onDateChange'?: (date: Date) => void;
   }
   interface StDatepickerInner {
-    'currentDay'?: Date;
     'currentMonth'?: Date;
-    'datepickerDates'?: IDatePickerDay[];
+    'datepickerDates'?: IDatePickerModel[];
     'onDateSelect'?: (date: Date) => void;
-    'onMonthChange'?: (date:Date) => void;
+    'onMonthChange'?: (date: Date) => void;
+    'resolveDayView'?: (date: IDatePickerModel) => string;
+  }
+  interface StDatepickerNav {
+    'currentDate'?: Date;
+    'format'?: string;
+    'navStep'?: string;
+    'onDateChange'?: (date: Date) => void;
+    'toggleView'?: () => void;
+  }
+  interface StDatepickerTopnav {
+    'onDateChange'?: (date: Date) => void;
+    'selectedDay'?: Date;
+    'toggleView'?: () => void;
+  }
+  interface StDaterangepicker {
+    'dateEnd'?: Date;
+    'dateStart'?: Date;
+    'onDateChanged'?: (event: CustomEvent<any>) => void;
+    'open'?: boolean;
+  }
+  interface StDaterangepickerHeader {
+    'dateEnd'?: Date;
+    'dateStart'?: Date;
   }
 
   interface IntrinsicElements {
@@ -118,6 +193,10 @@ declare namespace LocalJSX {
     'st-datepicker-footer': StDatepickerFooter;
     'st-datepicker-header': StDatepickerHeader;
     'st-datepicker-inner': StDatepickerInner;
+    'st-datepicker-nav': StDatepickerNav;
+    'st-datepicker-topnav': StDatepickerTopnav;
+    'st-daterangepicker': StDaterangepicker;
+    'st-daterangepicker-header': StDaterangepickerHeader;
   }
 }
 
@@ -132,6 +211,10 @@ declare module "@stencil/core" {
       'st-datepicker-footer': LocalJSX.StDatepickerFooter & JSXBase.HTMLAttributes<HTMLStDatepickerFooterElement>;
       'st-datepicker-header': LocalJSX.StDatepickerHeader & JSXBase.HTMLAttributes<HTMLStDatepickerHeaderElement>;
       'st-datepicker-inner': LocalJSX.StDatepickerInner & JSXBase.HTMLAttributes<HTMLStDatepickerInnerElement>;
+      'st-datepicker-nav': LocalJSX.StDatepickerNav & JSXBase.HTMLAttributes<HTMLStDatepickerNavElement>;
+      'st-datepicker-topnav': LocalJSX.StDatepickerTopnav & JSXBase.HTMLAttributes<HTMLStDatepickerTopnavElement>;
+      'st-daterangepicker': LocalJSX.StDaterangepicker & JSXBase.HTMLAttributes<HTMLStDaterangepickerElement>;
+      'st-daterangepicker-header': LocalJSX.StDaterangepickerHeader & JSXBase.HTMLAttributes<HTMLStDaterangepickerHeaderElement>;
     }
   }
 }
