@@ -5,6 +5,20 @@
 
 https://k1laba.github.io/st-datepicker/
 
+## Installation
+
+You can install it using npm
+
+```
+  npm install @k1laba/st-datepicker --save
+```
+
+or manually add a script tag in your html
+
+```
+  <script src="https://unpkg.com/@k1laba/st-datepicker/dist/st-datepicker.js"></script>
+```
+
 ## Examples
 
 To show date picker:

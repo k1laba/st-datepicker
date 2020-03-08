@@ -5,14 +5,17 @@ import { IDatePartModel } from "../models/date-part.model";
 export class DateHelper {
 
   public static getYearDataSource(): IDatePartModel[] {
-       const year = new Date().getFullYear();
-       return [year - 1, year, year + 1].map(item => { return { name: item.toString(), value: item }});
-    }
+    const totalYearsCount: number = 12;
+    const pastYearsCount: number = 10;
+    const yearFrom: number = new Date().getFullYear() - pastYearsCount;
+    const range: number[] = Array.from(Array(totalYearsCount).keys()).map(i => yearFrom + i);
+    return range.map(item => { return { name: item.toString(), value: item } });
+  }
   public static getWeekDaysNames(): string[] {
     return moment.weekdays().map((w) => w[0]);
   }
   public static getMonthDataSource(): IDatePartModel[] {
-    return moment.monthsShort().map((m: string, index: number) => { return { name: m, value: index }});
+    return moment.monthsShort().map((m: string, index: number) => { return { name: m, value: index } });
   }
 
   public static getDaysDataSource(date: Date): IDatePartModel[] {
@@ -24,7 +27,7 @@ export class DateHelper {
       dates.push(start.clone().toDate());
       start = start.add(1, 'days');
     }
-    return dates.map((date: Date) => { return { name: date.getDate().toString(), value: date.getDate() }});
+    return dates.map((date: Date) => { return { name: date.getDate().toString(), value: date.getDate() } });
   }
 
   public static getMonthDates(date: MomentInput): Array<IDatePickerModel> {
@@ -94,5 +97,5 @@ export class DateHelper {
 
   public static isInRange(date: Date, start: Date, end: Date) {
     return this.isGreaterThenOrEqual(date, start) && this.isLessThenOrEqual(date, end);
-}
+  }
 }
