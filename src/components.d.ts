@@ -47,18 +47,19 @@ export namespace Components {
     'format': string;
     'navStep': string;
     'onDateChange': (date: Date) => void;
+    'renderDate': () => void;
     'toggleView': () => void;
   }
   interface StDatepickerTopnav {
     'onDateChange': (date: Date) => void;
+    'renderDate': () => void;
     'selectedDay': Date;
     'toggleView': () => void;
   }
   interface StDaterangepicker {
     'dateEnd'?: Date;
     'dateStart'?: Date;
-    'getEndDate': () => Promise<Date>;
-    'getStartDate': () => Promise<Date>;
+    'getDateRange': () => Promise<any>;
     'open': boolean;
   }
   interface StDaterangepickerHeader {
@@ -169,10 +170,12 @@ declare namespace LocalJSX {
     'format'?: string;
     'navStep'?: string;
     'onDateChange'?: (date: Date) => void;
+    'renderDate'?: () => void;
     'toggleView'?: () => void;
   }
   interface StDatepickerTopnav {
     'onDateChange'?: (date: Date) => void;
+    'renderDate'?: () => void;
     'selectedDay'?: Date;
     'toggleView'?: () => void;
   }

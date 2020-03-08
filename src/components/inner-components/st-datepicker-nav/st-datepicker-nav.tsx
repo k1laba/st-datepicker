@@ -13,6 +13,7 @@ export class StDatePickerNav {
     @Prop() navStep: string = 'd';
     @Prop() onDateChange: (date: Date) => void;
     @Prop() toggleView: () => void;
+    @Prop() renderDate: () => void;
 
     render() {
         return (
@@ -22,7 +23,7 @@ export class StDatePickerNav {
                     <ion-icon name="ios-arrow-back"></ion-icon>
                 </ion-button>}
                 <div onClick={() => this.toggleView && this.toggleView()}
-                    class="current-date">{moment(this.currentDate).format(this.format)}
+                    class="current-date">{this.renderDate ? this.renderDate() : moment(this.currentDate).format(this.format)}
                 </div>
                 {!!this.onDateChange && <ion-button class="arrow-button"
                     onClick={() => this.onDateChange(DateHelper.getNextDay(this.currentDate, this.navStep))}

@@ -13,8 +13,49 @@ To show date picker:
   <st-datepicker></st-datepicker>
 ```
 
-or show date range picker
+subscribe to date change:
+
+```
+  window.onload = () => {
+    const dateEl = document.querySelector('st-datepicker');
+    const resultEl = document.querySelector('#date-result');
+    dateEl.addEventListener('dateChanged', (e) => resultEl.innerHTML = e.detail.toDateString());
+  };
+
+```
+
+get date from date picker:
+
+```
+  (async () => {
+    resultEl.innerHTML = (await dateEl.getDate()).toDateString();
+  })();
+```
+
+To show date range picker:
 
 ```
   <st-daterangepicker></st-daterangepicker>
+```
+
+subscribe to date range change:
+
+```
+  window.onload = () => {
+    const rangeEl = document.querySelector('st-daterangepicker');
+    const rangeResultEl = document.querySelector('#range-result');
+    rangeEl.addEventListener('dateChanged', (e) => {
+      rangeResultEl.innerHTML = e.detail.start.toDateString() + ' - ' + e.detail.end.toDateString();
+    });
+  };
+
+```
+
+get date range from date range picker:
+
+```
+  (async () => {
+    const rangeInfo = await rangeEl.getDateRange();
+    rangeResultEl.innerHTML = rangeInfo.start.toDateString() + ' - ' + rangeInfo.end.toDateString();
+  })();
 ```

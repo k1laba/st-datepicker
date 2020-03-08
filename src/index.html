@@ -23,6 +23,7 @@
       align-items: center;
       flex-wrap: wrap;
     }
+
     .flex-container st-datepicker {
       z-index: 1001;
     }
@@ -36,15 +37,32 @@
 <body>
 
   <div class="flex-container">
-    <st-datepicker></st-datepicker>
-    <st-daterangepicker></st-daterangepicker>
-  </div>
-  <div class="flex-container result-wrapper">
-    <p class="date-result"></p>
-    <p class="range-result"></p>
+    <div class="box">
+      <st-datepicker></st-datepicker>
+      <p>Date: <span id="date-result"></span></p>
+    </div>
+    <div class="box">
+      <st-daterangepicker></st-daterangepicker>
+      <p>Range: <span id="range-result"></span></p>
+    </div>
   </div>
   <script>
+    window.onload = (async () => {
+      // subscribe to datepicker
+      const dateEl = document.querySelector('st-datepicker');
+      const resultEl = document.querySelector('#date-result');
+      resultEl.innerHTML = (await dateEl.getDate()).toDateString();
+      dateEl.addEventListener('dateChanged', (e) => document.querySelector('#date-result').innerHTML = e.detail.toDateString());
 
+      // subscribe to daterangepicker
+      const rangeEl = document.querySelector('st-daterangepicker');
+      const rangeResultEl = document.querySelector('#range-result');
+      const rangeInfo = await rangeEl.getDateRange();
+      rangeResultEl.innerHTML = rangeInfo.start.toDateString() + ' - ' + rangeInfo.end.toDateString();
+      rangeEl.addEventListener('dateChanged', (e) => {
+        rangeResultEl.innerHTML = e.detail.start.toDateString() + ' - ' + e.detail.end.toDateString();
+      });
+    });
   </script>
 </body>
 

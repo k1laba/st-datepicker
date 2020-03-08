@@ -9,10 +9,14 @@ export class StDatePickerTopnav {
     @Prop() selectedDay: Date;
     @Prop() onDateChange: (date: Date) => void;
     @Prop() toggleView: () => void;
+    @Prop() renderDate: () => void;
 
     constructor() {
         if (!!this.onDateChange) {
             this.onDateChange.bind(this);
+        }
+        if (!!this.renderDate) {
+            this.renderDate.bind(this);
         }
     }
 
@@ -27,6 +31,7 @@ export class StDatePickerTopnav {
             <st-datepicker-nav class="flex-item"
                 onDateChange={this.onDateChange}
                 toggleView={() => this.toggleView()}
+                renderDate={this.renderDate}
                 format="ddd DD MMMM YYYY"
                 currentDate={this.selectedDay}></st-datepicker-nav>];
     }

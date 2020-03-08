@@ -73,18 +73,20 @@ export class StSingleDatePicker {
     }
 
     private handleTopNavigationChange(date: Date) {
-        this.selectedDay = date;
         this.setCurrentDate(date);
+        this.approve(false);
     }
     private toggleView(): void {
         this.showContent = !this.showContent;
     }
 
-    private approve(): void {
+    private approve(toggle: boolean = true): void {
         this.selectedDay = this.currentDay;
         this.getDays(this.selectedDay);
         this.dateChanged.emit(this.selectedDay);
-        this.toggleView();
+        if (toggle) {
+            this.toggleView();
+        }
     }
     private getDays(date: Date): void {
         this.currentMonth = date;

@@ -1,6 +1,8 @@
 import { Component, h, State, Prop, Method, EventEmitter, Event } from '@stencil/core';
 import { IDatePickerModel } from '../../models/date-picker.model';
 import { DateHelper } from '../../utils/date.helper';
+import moment from 'moment';
+import { isThisTypeNode } from 'typescript';
 
 @Component({
     tag: 'st-daterangepicker',
@@ -24,17 +26,14 @@ export class StRangeDatePicker {
     }
 
     @Method()
-    public async getStartDate(): Promise<Date> {
-        return await Promise.resolve(this.dateStart);
-    }
-    @Method()
-    public async getEndDate(): Promise<Date> {
-        return await Promise.resolve(this.dateEnd);
+    public async getDateRange(): Promise<any> {
+        return await Promise.resolve({ start: this.dateStart, end: this.dateEnd });
     }
 
     render() {
         return [<st-datepicker-topnav
             selectedDay={this.initialDate}
+            renderDate={() => this.renderDate()}
             toggleView={() => this.toggleView()}></st-datepicker-topnav>,
         this.showContent && <div class="datepicker-content">
             <st-daterangepicker-header
@@ -49,10 +48,17 @@ export class StRangeDatePicker {
                 onMonthChange={(date: Date) => this.getDays(date)}>
             </st-datepicker-inner>
             <st-datepicker-footer
-                onCancel={() => this.cancel()}
+                onCancel={() => this.toggleView()}
                 onApprove={() => this.approve()}>
             </st-datepicker-footer>
         </div>];
+    }
+
+    private renderDate(): string {
+        const format: string = 'DD MMM YYYY';
+        const from: string = this.dateStart ? moment(this.dateStart).format(format) : '';
+        const to: string = this.dateEnd ? moment(this.dateEnd).format(format) : '';
+        return `${from} - ${to}`;
     }
 
     private resolveDayView(d: IDatePickerModel) {
@@ -89,10 +95,6 @@ export class StRangeDatePicker {
         this.currentMonth = this.dateEnd;
     }
 
-    private cancel(): void {
-        this.setCurrentDate();
-        this.toggleView();
-    }
     private setCurrentDate(date?: Date) {
         if (DateHelper.areDatesEqual(this.dateStart, date)) {
             this.dateStart = null;
@@ -125,13 +127,11 @@ export class StRangeDatePicker {
         this.showContent = !this.showContent;
     }
 
-    private approve(toggleView: boolean = true): void {
+    private approve(): void {
         if (this.dateStart && this.dateEnd) {
             this.getDays(this.currentMonth);
             this.dateChanged.emit({ start: this.dateStart, end: this.dateEnd });
-            if (toggleView) {
-                this.toggleView();
-            }
+            this.toggleView();
         }
     }
     private getDays(date: Date): void {
