@@ -1,7 +1,8 @@
 {
-  "name": "st-datepicker",
-  "version": "0.0.1",
-  "description": "Stencil Component Starter",
+  "name": "@k1laba/st-datepicker",
+  "version": "1.2.0",
+  "description": "Datepicker web component implementation with Stenciljs",
+  "author": "k1laba",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "es2015": "dist/esm/index.mjs",
@@ -10,6 +11,10 @@
   "collection": "dist/collection/collection-manifest.json",
   "collection:main": "dist/collection/index.js",
   "unpkg": "dist/st-datepicker/st-datepicker.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/k1laba/st-datepicker.git"
+  },
   "files": [
     "dist/",
     "loader/"
@@ -27,7 +32,6 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@ionic/core": "^4.11.5",
     "moment": "^2.24.0"
   }
 }

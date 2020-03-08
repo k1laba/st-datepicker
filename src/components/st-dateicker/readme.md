@@ -49,10 +49,7 @@ graph TD;
   st-datepicker --> st-datepicker-header
   st-datepicker --> st-datepicker-inner
   st-datepicker --> st-datepicker-footer
-  st-datepicker-topnav --> ion-icon
   st-datepicker-topnav --> st-datepicker-nav
-  st-datepicker-nav --> ion-icon
-  st-datepicker-header --> ion-icon
   st-datepicker-header --> st-date-part-selector
   st-datepicker-inner --> st-datepicker-nav
   style st-datepicker fill:#f9f,stroke:#333,stroke-width:4px

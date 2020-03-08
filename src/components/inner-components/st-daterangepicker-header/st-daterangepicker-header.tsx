@@ -1,5 +1,6 @@
 import { Component, Prop, h } from "@stencil/core";
 import moment from "moment";
+import { FileHelper } from "../../../utils/file.helper";
 
 @Component({
     tag: 'st-daterangepicker-header',
@@ -15,9 +16,7 @@ export class StRangeDatePickerHeader {
                 <span>Start date</span>
                 {this.dateStart && <span>{moment(this.dateStart).format('DD MMM YYYY')}</span>}
             </div>
-            <ion-button class="arrow-button" fill="clear" color="light">
-                <ion-icon name="ios-arrow-forward"></ion-icon>
-            </ion-button>
+            <img src={FileHelper.getAssetUrl('forward.svg')} class="arrow-button"/>
             <div class="item">
                 <span>End date</span>
                 {this.dateEnd && <span>{moment(this.dateEnd).format('DD MMM YYYY')}</span>}

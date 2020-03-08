@@ -1,11 +1,64 @@
 <!doctype html>
 <html dir="ltr" lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
-    <meta http-equiv="refresh" content="0;url=https://k1laba.github.io/st-datepicker/www/index.html" />
-</head>
-<body>
+    <script src="https://unpkg.com/@k1laba/st-datepicker@1.2.0/dist/st-datepicker.js"></script>
+    <style>
+        html * {
+            box-sizing: border-box;
+        }
 
+        body {
+            margin: 0;
+            padding: 0;
+            background: #ccc;
+        }
+
+        .flex-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .flex-container st-datepicker {
+            z-index: 1001;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="flex-container">
+        <div class="box">
+            <st-datepicker></st-datepicker>
+            <p>Date: <span id="date-result"></span></p>
+        </div>
+        <div class="box">
+            <st-daterangepicker></st-daterangepicker>
+            <p>Range: <span id="range-result"></span></p>
+        </div>
+    </div>
+    <script>
+        window.onload = (async () => {
+            // subscribe to datepicker
+            const dateEl = document.querySelector('st-datepicker');
+            const resultEl = document.querySelector('#date-result');
+            resultEl.innerHTML = (await dateEl.getDate()).toDateString();
+            dateEl.addEventListener('dateChanged', (e) => document.querySelector('#date-result').innerHTML = e.detail.toDateString());
+
+            // subscribe to daterangepicker
+            const rangeEl = document.querySelector('st-daterangepicker');
+            const rangeResultEl = document.querySelector('#range-result');
+            const rangeInfo = await rangeEl.getDateRange();
+            rangeResultEl.innerHTML = rangeInfo.start.toDateString() + ' - ' + rangeInfo.end.toDateString();
+            rangeEl.addEventListener('dateChanged', (e) => {
+                rangeResultEl.innerHTML = e.detail.start.toDateString() + ' - ' + e.detail.end.toDateString();
+            });
+        });
+    </script>
 </body>
+
 </html>

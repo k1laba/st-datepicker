@@ -13,6 +13,7 @@
 | `format`       | `format`   |             | `string`               | `undefined` |
 | `navStep`      | `nav-step` |             | `string`               | `'d'`       |
 | `onDateChange` | --         |             | `(date: Date) => void` | `undefined` |
+| `renderDate`   | --         |             | `() => void`           | `undefined` |
 | `toggleView`   | --         |             | `() => void`           | `undefined` |
 
 
@@ -23,14 +24,9 @@
  - [st-datepicker-inner](../st-datepicker-inner)
  - [st-datepicker-topnav](../st-datepicker-topnav)
 
-### Depends on
-
-- ion-icon
-
 ### Graph
 ```mermaid
 graph TD;
-  st-datepicker-nav --> ion-icon
   st-datepicker-inner --> st-datepicker-nav
   st-datepicker-topnav --> st-datepicker-nav
   style st-datepicker-nav fill:#f9f,stroke:#333,stroke-width:4px

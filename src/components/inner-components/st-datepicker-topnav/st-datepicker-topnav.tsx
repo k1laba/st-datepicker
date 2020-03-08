@@ -1,4 +1,5 @@
 import { Component, h, Prop } from "@stencil/core";
+import { FileHelper } from "../../../utils/file.helper";
 
 @Component({
     tag: 'st-datepicker-topnav',
@@ -23,10 +24,7 @@ export class StDatePickerTopnav {
     render() {
         return [
             <div class="flex-item">
-                <ion-button fill="clear" color="dark"
-                onClick={() => this.toggleView()}>
-                <ion-icon class="calendar-icon" name="md-calendar"></ion-icon>
-            </ion-button>
+                <img src={FileHelper.getAssetUrl('calendar.svg')} class="calendar-icon" onClick={() => this.toggleView()}/>
             </div>,
             <st-datepicker-nav class="flex-item"
                 onDateChange={this.onDateChange}

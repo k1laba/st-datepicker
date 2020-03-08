@@ -2,7 +2,6 @@ import { Component, h, State, Prop, Method, EventEmitter, Event } from '@stencil
 import { IDatePickerModel } from '../../models/date-picker.model';
 import { DateHelper } from '../../utils/date.helper';
 import moment from 'moment';
-import { isThisTypeNode } from 'typescript';
 
 @Component({
     tag: 'st-daterangepicker',

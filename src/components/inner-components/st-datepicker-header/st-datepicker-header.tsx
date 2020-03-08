@@ -1,6 +1,7 @@
 import { Component, h, State, Prop } from "@stencil/core";
 import { DateHelper } from "../../../utils/date.helper";
 import moment from "moment";
+import { FileHelper } from "../../../utils/file.helper";
 
 @Component({
     tag: 'st-datepicker-header',
@@ -21,19 +22,19 @@ export class StDatePickerHeader {
             <div class="item day" onClick={() => this.toggleEditModes(0)}>
                 <div class="inner-container">
                     <span>{this.currentDay.getDate()}</span>
-                    <ion-icon name="ios-arrow-down"></ion-icon>
+                    <img src={FileHelper.getAssetUrl('down.svg')} />
                 </div>
             </div>
             <div class="item month" onClick={() => this.toggleEditModes(1)}>
                 <div class="inner-container">
                     <span>{moment(this.currentDay).format('MMM')}</span>
-                    <ion-icon name="ios-arrow-down"></ion-icon>
+                    <img src={FileHelper.getAssetUrl('down.svg')} />
                 </div>
             </div>
             <div class="item year" onClick={() => this.toggleEditModes(2)}>
                 <div class="inner-container">
                     <span>{this.currentDay.getFullYear()}</span>
-                    <ion-icon name="ios-arrow-down"></ion-icon>
+                    <img src={FileHelper.getAssetUrl('down.svg')} />
                 </div>
             </div>
         </div>,

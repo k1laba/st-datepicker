@@ -18,18 +18,15 @@ export class StDatePickerNav {
     render() {
         return (
             <div class="nav">
-                {!!this.onDateChange && <ion-button class="arrow-button" fill="clear" color="dark"
-                    onClick={() => this.onDateChange(DateHelper.getPrevDay(this.currentDate, this.navStep))}>
-                    <ion-icon name="ios-arrow-back"></ion-icon>
-                </ion-button>}
+                {!!this.onDateChange && <img class="arrow-button" src="assets/back.svg"
+                    onClick={() => this.onDateChange(DateHelper.getPrevDay(this.currentDate, this.navStep))} />
+                }
                 <div onClick={() => this.toggleView && this.toggleView()}
                     class="current-date">{this.renderDate ? this.renderDate() : moment(this.currentDate).format(this.format)}
                 </div>
-                {!!this.onDateChange && <ion-button class="arrow-button"
+                {!!this.onDateChange && <img class="arrow-button"
                     onClick={() => this.onDateChange(DateHelper.getNextDay(this.currentDate, this.navStep))}
-                    fill="clear" color="dark">
-                    <ion-icon name="ios-arrow-forward"></ion-icon>
-                </ion-button>}
+                    src="assets/forward.svg"/>}
             </div>
         );
     }

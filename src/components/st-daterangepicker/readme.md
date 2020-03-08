@@ -23,23 +23,13 @@
 
 ## Methods
 
-### `getEndDate() => Promise<Date>`
+### `getDateRange() => Promise<any>`
 
 
 
 #### Returns
 
-Type: `Promise<Date>`
-
-
-
-### `getStartDate() => Promise<Date>`
-
-
-
-#### Returns
-
-Type: `Promise<Date>`
+Type: `Promise<any>`
 
 
 
@@ -60,10 +50,7 @@ graph TD;
   st-daterangepicker --> st-daterangepicker-header
   st-daterangepicker --> st-datepicker-inner
   st-daterangepicker --> st-datepicker-footer
-  st-datepicker-topnav --> ion-icon
   st-datepicker-topnav --> st-datepicker-nav
-  st-datepicker-nav --> ion-icon
-  st-daterangepicker-header --> ion-icon
   st-datepicker-inner --> st-datepicker-nav
   style st-daterangepicker fill:#f9f,stroke:#333,stroke-width:4px
 ```

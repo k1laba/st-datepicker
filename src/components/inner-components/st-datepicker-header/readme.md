@@ -21,13 +21,11 @@
 
 ### Depends on
 
-- ion-icon
 - [st-date-part-selector](../st-date-part-selector)
 
 ### Graph
 ```mermaid
 graph TD;
-  st-datepicker-header --> ion-icon
   st-datepicker-header --> st-date-part-selector
   st-datepicker --> st-datepicker-header
   style st-datepicker-header fill:#f9f,stroke:#333,stroke-width:4px

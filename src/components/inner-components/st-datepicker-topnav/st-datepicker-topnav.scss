@@ -2,16 +2,13 @@ st-datepicker-topnav {
     display: flex;
     justify-content: flex-start;
 
-    ion-button {
+    .calendar-icon {
+        padding: 5px;
+        width: 34px;
+        cursor: pointer;
         display: flex;
         align-items: center;
         justify-content: center;
-    }
-
-    .calendar-icon {
-        padding: 5px;
-        font-size: 24px;
-        cursor: pointer;
     }
 
     .flex-item {
