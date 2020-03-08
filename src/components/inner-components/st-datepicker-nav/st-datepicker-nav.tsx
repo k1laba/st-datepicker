@@ -1,6 +1,7 @@
 import { Component, h, Prop } from "@stencil/core";
 import { DateHelper } from "../../../utils/date.helper";
 import moment from "moment";
+import { FileHelper } from "../../../utils/file.helper";
 
 @Component({
     tag: 'st-datepicker-nav',
@@ -18,7 +19,7 @@ export class StDatePickerNav {
     render() {
         return (
             <div class="nav">
-                {!!this.onDateChange && <img class="arrow-button" src="assets/back.svg"
+                {!!this.onDateChange && <img class="arrow-button" src={FileHelper.getAssetUrl('back.svg')}
                     onClick={() => this.onDateChange(DateHelper.getPrevDay(this.currentDate, this.navStep))} />
                 }
                 <div onClick={() => this.toggleView && this.toggleView()}
@@ -26,7 +27,7 @@ export class StDatePickerNav {
                 </div>
                 {!!this.onDateChange && <img class="arrow-button"
                     onClick={() => this.onDateChange(DateHelper.getNextDay(this.currentDate, this.navStep))}
-                    src="assets/forward.svg"/>}
+                    src={FileHelper.getAssetUrl('forward.svg')}/>}
             </div>
         );
     }
