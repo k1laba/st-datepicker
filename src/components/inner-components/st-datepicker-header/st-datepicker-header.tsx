@@ -10,6 +10,8 @@ import { FileHelper } from "../../../utils/file.helper";
 export class StDatePickerHeader {
 
     @Prop() currentDay: Date;
+    @Prop() yearFrom?: number;
+    @Prop() yearTo?: number;
     @Prop() onDateChange: (date: Date) => void;
     @State() editModeFlags: boolean[];
 
@@ -56,7 +58,7 @@ export class StDatePickerHeader {
             {<st-date-part-selector
                 mode="y"
                 onDateChange={(date) => this.handleDateChange(date)}
-                dataSource={DateHelper.getYearDataSource()}
+                dataSource={DateHelper.getYearDataSource(this.yearFrom, this.yearTo)}
                 date={this.currentDay}
                 show={this.editModeFlags[2]}>
             </st-date-part-selector>}

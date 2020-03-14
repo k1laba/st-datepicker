@@ -24,7 +24,7 @@ or manually add a script tag in your html
 To show date picker:
 
 ```
-  <st-datepicker></st-datepicker>
+  <st-datepicker from="2010" to="2025"></st-datepicker>
 ```
 
 subscribe to date change:

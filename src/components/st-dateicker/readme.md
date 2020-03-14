@@ -7,10 +7,12 @@
 
 ## Properties
 
-| Property      | Attribute | Description | Type      | Default     |
-| ------------- | --------- | ----------- | --------- | ----------- |
-| `open`        | `open`    |             | `boolean` | `undefined` |
-| `selectedDay` | --        |             | `Date`    | `undefined` |
+| Property | Attribute | Description | Type      | Default     |
+| -------- | --------- | ----------- | --------- | ----------- |
+| `date`   | --        |             | `Date`    | `undefined` |
+| `from`   | `from`    |             | `number`  | `undefined` |
+| `open`   | `open`    |             | `boolean` | `undefined` |
+| `to`     | `to`      |             | `number`  | `undefined` |
 
 
 ## Events

@@ -4,11 +4,13 @@ import { IDatePartModel } from "../models/date-part.model";
 
 export class DateHelper {
 
-  public static getYearDataSource(): IDatePartModel[] {
-    const totalYearsCount: number = 12;
-    const pastYearsCount: number = 10;
-    const yearFrom: number = new Date().getFullYear() - pastYearsCount;
-    const range: number[] = Array.from(Array(totalYearsCount).keys()).map(i => yearFrom + i);
+  public static getYearDataSource(from?: number, to?: number): IDatePartModel[] {
+    const defaultFrom: number = new Date().getFullYear() - 10;
+    const defaultTo: number = new Date().getFullYear();
+    from = from || defaultFrom;
+    to = to || defaultTo;
+
+    const range: number[] = Array.from(Array(to - from + 1).keys()).reverse().map((val) => from + val);
     return range.map(item => { return { name: item.toString(), value: item } });
   }
   public static getWeekDaysNames(): string[] {

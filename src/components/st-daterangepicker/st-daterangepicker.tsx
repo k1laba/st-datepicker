@@ -31,7 +31,7 @@ export class StRangeDatePicker {
 
     render() {
         return [<st-datepicker-topnav
-            selectedDay={this.initialDate}
+            date={this.initialDate}
             renderDate={() => this.renderDate()}
             toggleView={() => this.toggleView()}></st-datepicker-topnav>,
         this.showContent && <div class="datepicker-content">

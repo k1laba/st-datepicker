@@ -7,10 +7,12 @@
 
 ## Properties
 
-| Property       | Attribute | Description | Type                   | Default     |
-| -------------- | --------- | ----------- | ---------------------- | ----------- |
-| `currentDay`   | --        |             | `Date`                 | `undefined` |
-| `onDateChange` | --        |             | `(date: Date) => void` | `undefined` |
+| Property       | Attribute   | Description | Type                   | Default     |
+| -------------- | ----------- | ----------- | ---------------------- | ----------- |
+| `currentDay`   | --          |             | `Date`                 | `undefined` |
+| `onDateChange` | --          |             | `(date: Date) => void` | `undefined` |
+| `yearFrom`     | `year-from` |             | `number`               | `undefined` |
+| `yearTo`       | `year-to`   |             | `number`               | `undefined` |
 
 
 ## Dependencies

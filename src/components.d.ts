@@ -23,9 +23,11 @@ export namespace Components {
     'show': boolean;
   }
   interface StDatepicker {
+    'date': Date;
+    'from'?: number;
     'getDate': () => Promise<Date>;
     'open': boolean;
-    'selectedDay': Date;
+    'to'?: number;
   }
   interface StDatepickerFooter {
     'onApprove': () => void;
@@ -34,6 +36,8 @@ export namespace Components {
   interface StDatepickerHeader {
     'currentDay': Date;
     'onDateChange': (date: Date) => void;
+    'yearFrom'?: number;
+    'yearTo'?: number;
   }
   interface StDatepickerInner {
     'currentMonth': Date;
@@ -51,9 +55,9 @@ export namespace Components {
     'toggleView': () => void;
   }
   interface StDatepickerTopnav {
+    'date': Date;
     'onDateChange': (date: Date) => void;
     'renderDate': () => void;
-    'selectedDay': Date;
     'toggleView': () => void;
   }
   interface StDaterangepicker {
@@ -146,9 +150,11 @@ declare namespace LocalJSX {
     'show'?: boolean;
   }
   interface StDatepicker {
+    'date'?: Date;
+    'from'?: number;
     'onDateChanged'?: (event: CustomEvent<any>) => void;
     'open'?: boolean;
-    'selectedDay'?: Date;
+    'to'?: number;
   }
   interface StDatepickerFooter {
     'onApprove'?: () => void;
@@ -157,6 +163,8 @@ declare namespace LocalJSX {
   interface StDatepickerHeader {
     'currentDay'?: Date;
     'onDateChange'?: (date: Date) => void;
+    'yearFrom'?: number;
+    'yearTo'?: number;
   }
   interface StDatepickerInner {
     'currentMonth'?: Date;
@@ -174,9 +182,9 @@ declare namespace LocalJSX {
     'toggleView'?: () => void;
   }
   interface StDatepickerTopnav {
+    'date'?: Date;
     'onDateChange'?: (date: Date) => void;
     'renderDate'?: () => void;
-    'selectedDay'?: Date;
     'toggleView'?: () => void;
   }
   interface StDaterangepicker {

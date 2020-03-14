@@ -9,8 +9,10 @@ import { IDatePickerModel } from '../../models/date-picker.model';
 })
 export class StSingleDatePicker {
 
-    @Prop() selectedDay: Date;
+    @Prop() date: Date;
     @Prop() open: boolean;
+    @Prop() from?: number;
+    @Prop() to?: number;
     @State() currentDay: Date;
     @State() currentMonth: Date;
     @State() showContent: boolean;
@@ -19,22 +21,24 @@ export class StSingleDatePicker {
 
     componentWillLoad() {
         this.init();
-        this.getDays(this.selectedDay);
+        this.getDays(this.date);
     }
 
     @Method()
     public async getDate(): Promise<Date> {
-        return await Promise.resolve(this.selectedDay);
+        return await Promise.resolve(this.date);
     }
 
     render() {
         return [<st-datepicker-topnav
-            selectedDay={this.selectedDay}
+            date={this.date}
             onDateChange={(date: Date) => this.handleTopNavigationChange(date)}
             toggleView={() => this.toggleView()}></st-datepicker-topnav>,
         this.showContent && <div class="datepicker-content">
             <st-datepicker-header
                 currentDay={this.currentDay}
+                yearFrom={this.from}
+                yearTo={this.to}
                 onDateChange={(date) => this.setCurrentDate(date)}>
             </st-datepicker-header>
             <st-datepicker-inner
@@ -58,9 +62,9 @@ export class StSingleDatePicker {
 
     private init() {
         this.showContent = this.open;
-        this.selectedDay = this.selectedDay || new Date();
-        this.currentDay = this.selectedDay;
-        this.currentMonth = this.selectedDay;
+        this.date = this.date || new Date();
+        this.currentDay = this.date;
+        this.currentMonth = this.date;
     }
 
     private cancel(): void {
@@ -68,7 +72,7 @@ export class StSingleDatePicker {
         this.toggleView();
     }
     private setCurrentDate(date?: Date) {
-        this.currentDay = date || this.selectedDay;
+        this.currentDay = date || this.date;
         this.getDays(this.currentDay);
     }
 
@@ -81,9 +85,9 @@ export class StSingleDatePicker {
     }
 
     private approve(toggle: boolean = true): void {
-        this.selectedDay = this.currentDay;
-        this.getDays(this.selectedDay);
-        this.dateChanged.emit(this.selectedDay);
+        this.date = this.currentDay;
+        this.getDays(this.date);
+        this.dateChanged.emit(this.date);
         if (toggle) {
             this.toggleView();
         }

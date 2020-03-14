@@ -9,9 +9,9 @@
 
 | Property       | Attribute | Description | Type                   | Default     |
 | -------------- | --------- | ----------- | ---------------------- | ----------- |
+| `date`         | --        |             | `Date`                 | `undefined` |
 | `onDateChange` | --        |             | `(date: Date) => void` | `undefined` |
 | `renderDate`   | --        |             | `() => void`           | `undefined` |
-| `selectedDay`  | --        |             | `Date`                 | `undefined` |
 | `toggleView`   | --        |             | `() => void`           | `undefined` |
 
 

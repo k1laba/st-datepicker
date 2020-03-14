@@ -7,7 +7,7 @@ import { FileHelper } from "../../../utils/file.helper";
 })
 export class StDatePickerTopnav {
 
-    @Prop() selectedDay: Date;
+    @Prop() date: Date;
     @Prop() onDateChange: (date: Date) => void;
     @Prop() toggleView: () => void;
     @Prop() renderDate: () => void;
@@ -31,6 +31,6 @@ export class StDatePickerTopnav {
                 toggleView={() => this.toggleView()}
                 renderDate={this.renderDate}
                 format="ddd DD MMMM YYYY"
-                currentDate={this.selectedDay}></st-datepicker-nav>];
+                currentDate={this.date}></st-datepicker-nav>];
     }
 }
