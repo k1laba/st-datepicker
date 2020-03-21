@@ -23,10 +23,12 @@ export class StDatePickerTopnav {
 
     render() {
         return [
-            <div class="flex-item">
-                <img src={FileHelper.getAssetUrl('calendar.svg')} class="calendar-icon" onClick={() => this.toggleView()}/>
+            <div class="st-datepicker-topnav__item">
+                <img src={FileHelper.getAssetUrl('calendar.svg')} 
+                class="st-datepicker-topnav__item__calendar" 
+                onClick={() => this.toggleView()}/>
             </div>,
-            <st-datepicker-nav class="flex-item"
+            <st-datepicker-nav class="st-datepicker-topnav__item"
                 onDateChange={this.onDateChange}
                 toggleView={() => this.toggleView()}
                 renderDate={this.renderDate}

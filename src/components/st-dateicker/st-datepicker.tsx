@@ -34,7 +34,7 @@ export class StSingleDatePicker {
             date={this.date}
             onDateChange={(date: Date) => this.handleTopNavigationChange(date)}
             toggleView={() => this.toggleView()}></st-datepicker-topnav>,
-        this.showContent && <div class="datepicker-content">
+        this.showContent && <div class="st-datepicker-content">
             <st-datepicker-header
                 currentDay={this.currentDay}
                 yearFrom={this.from}
@@ -56,7 +56,7 @@ export class StSingleDatePicker {
     }
 
     private resolveDayView(d: IDatePickerModel): string {
-        const className: string = DateHelper.areDatesEqual(d.date, this.currentDay) && 'active';
+        const className: string = DateHelper.areDatesEqual(d.date, this.currentDay) && 'st-datepicker-inner__dates--active';
         return <span class={className}>{d.isCurrentMonth && d.text}</span>;
     }
 

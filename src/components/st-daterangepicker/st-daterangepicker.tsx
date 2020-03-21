@@ -34,7 +34,7 @@ export class StRangeDatePicker {
             date={this.initialDate}
             renderDate={() => this.renderDate()}
             toggleView={() => this.toggleView()}></st-datepicker-topnav>,
-        this.showContent && <div class="datepicker-content">
+        this.showContent && <div class="st-datepicker-content">
             <st-daterangepicker-header
                 dateStart={this.dateStart}
                 dateEnd={this.dateEnd}>
@@ -64,6 +64,7 @@ export class StRangeDatePicker {
         const isStart: boolean = d.isCurrentMonth && DateHelper.areDatesEqual(d.date, this.dateStart);
         const isEnd: boolean = d.isCurrentMonth && DateHelper.areDatesEqual(d.date, this.dateEnd);
         const isInRange: boolean = d.isCurrentMonth && d.text && DateHelper.isInRange(d.date, this.dateStart, this.dateEnd);
+        const classPrefix: string = 'st-datepicker-inner__dates--';
         let parentClassName: string = '';
         let childClassName: string = '';
         if (isInRange) {
@@ -81,8 +82,8 @@ export class StRangeDatePicker {
             parentClassName = '';
             childClassName = 'active';
         }
-        return (<span class={parentClassName}>
-            <span class={childClassName}>{d.isCurrentMonth && d.text}</span>
+        return (<span class={classPrefix + parentClassName}>
+            <span class={classPrefix + childClassName}>{d.isCurrentMonth && d.text}</span>
         </span>);
     }
 

@@ -1,17 +1,9 @@
 st-datepicker-topnav {
     display: flex;
     justify-content: flex-start;
+    border-bottom: 1px solid #fff;
 
-    .calendar-icon {
-        padding: 5px;
-        width: 34px;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .flex-item {
+    .st-datepicker-topnav__item {
         border-bottom: 4px solid #424848;
 
         &:first-child {
@@ -23,7 +15,14 @@ st-datepicker-topnav {
             display: flex;
             justify-content: center;
         }
-    }
 
-    border-bottom: 1px solid #fff;
+        &__calendar {
+            padding: 5px;
+            width: 34px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
 }

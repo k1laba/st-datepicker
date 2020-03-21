@@ -1,19 +1,19 @@
 st-date-part-selector {
-    .select-wrapper {
+    .st-select-wrapper {
         position: absolute;
         width: 33.33%;
         z-index: 1000;
         left: 0;
 
-        &.m {
+        &--m {
             left: 1/3*100%
         }
 
-        &.y {
+        &--y {
             left: 2/3*100%;
         }
 
-        .select {
+        .st-select {
             list-style: none;
             color: #ffffff;
             padding: 0;
@@ -26,7 +26,7 @@ st-date-part-selector {
                 display: none;
             }
 
-            .option {
+            &__option {
                 background-blend-mode: multiply, normal;
                 background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(255, 255, 255, 0.5)),
                     linear-gradient(to bottom, #424848, #424848);

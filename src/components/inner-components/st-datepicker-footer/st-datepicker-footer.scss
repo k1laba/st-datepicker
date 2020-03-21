@@ -1,10 +1,10 @@
 st-datepicker-footer {
-    .footer {
+    .st-footer {
         display: flex;
         justify-content: flex-end;
         padding-top: 15px;
         padding-bottom: 15px;
-        .btn {
+        &__btn {
             cursor: pointer;
             padding: 3px 20px;
             font-size: 12px;

@@ -1,6 +1,6 @@
 st-daterangepicker-header {
 
-    .header {
+    .st-datepicker-range-header {
         height: 55px;
         display: flex;
         justify-content: space-around;
@@ -19,7 +19,7 @@ st-daterangepicker-header {
             opacity: .5;
         }
 
-        .item {
+        &__item {
             width: 33.33%;
             height: 100%;
             display: flex;

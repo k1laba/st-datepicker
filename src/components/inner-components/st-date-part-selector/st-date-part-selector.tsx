@@ -17,9 +17,9 @@ export class StDatePartSelector {
     @Prop() onDateChange: (date: Date) => void;
 
     render() {
-        return (<div class={`select-wrapper ${this.mode}`}>
-            {this.show && <div class="select" style={this.getHeightStyle(ITEM_HEIGHT * 5)}>
-                {this.dataSource.map((item: IDatePartModel) => <span class="option"
+        return (<div class={`st-select-wrapper st-select-wrapper--${this.mode}`}>
+            {this.show && <div class="st-select" style={this.getHeightStyle(ITEM_HEIGHT * 5)}>
+                {this.dataSource.map((item: IDatePartModel) => <span class="st-select__option"
                     style={this.getHeightStyle(ITEM_HEIGHT)}
                     onClick={() => this.setValue(item)}>
                     {item.name}

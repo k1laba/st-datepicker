@@ -20,21 +20,21 @@ export class StDatePickerHeader {
     }
 
     render() {
-        return [<div class="header">
-            <div class="item day" onClick={() => this.toggleEditModes(0)}>
-                <div class="inner-container">
+        return [<div class="st-datepicker-header">
+            <div class="st-datepicker-header__item st-datepicker-header__item--day" onClick={() => this.toggleEditModes(0)}>
+                <div class="st-datepicker-header__item__content">
                     <span>{this.currentDay.getDate()}</span>
                     <img src={FileHelper.getAssetUrl('down.svg')} />
                 </div>
             </div>
-            <div class="item month" onClick={() => this.toggleEditModes(1)}>
-                <div class="inner-container">
+            <div class="st-datepicker-header__item st-datepicker-header__item--month" onClick={() => this.toggleEditModes(1)}>
+                <div class="st-datepicker-header__item__content">
                     <span>{moment(this.currentDay).format('MMM')}</span>
                     <img src={FileHelper.getAssetUrl('down.svg')} />
                 </div>
             </div>
-            <div class="item year" onClick={() => this.toggleEditModes(2)}>
-                <div class="inner-container">
+            <div class="st-datepicker-header__item st-datepicker-header__item--year" onClick={() => this.toggleEditModes(2)}>
+                <div class="st-datepicker-header__item__content">
                     <span>{this.currentDay.getFullYear()}</span>
                     <img src={FileHelper.getAssetUrl('down.svg')} />
                 </div>

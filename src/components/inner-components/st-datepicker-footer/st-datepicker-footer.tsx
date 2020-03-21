@@ -12,10 +12,10 @@ export class StDatePickerFooter {
 
     render() {
         return (
-            <div class="footer">
-                <div class="button-wrapper">
-                    <a onClick={() => this.onCancel()} class="btn">Cancel</a>
-                    <a onClick={() => this.onApprove()} class="btn">Ok</a>
+            <div class="st-footer">
+                <div>
+                    <a onClick={() => this.onCancel()} class="st-footer__btn">Cancel</a>
+                    <a onClick={() => this.onApprove()} class="st-footer__btn">Ok</a>
                 </div>
             </div>
         );

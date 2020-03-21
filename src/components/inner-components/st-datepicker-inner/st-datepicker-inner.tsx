@@ -16,18 +16,18 @@ export class StDatePickerInner {
 
     render() {
         return (
-            <div class="datepicker-inner">
+            <div class="st-datepicker-inner">
                 <st-datepicker-nav
                     onDateChange={(date) => this.onMonthChange(date)}
                     format="MMMM YYYY"
                     navStep="M"
                     currentDate={this.currentMonth}>
                 </st-datepicker-nav>
-                <div class="week-names">
+                <div class="st-datepicker-inner__weeks">
                     {DateHelper.getWeekDaysNames().map(wd => <span>{wd}</span>)}
                 </div>
                 {DateHelper.getDaysGroupedByWeeks(this.datepickerDates).map(item =>
-                    <div class="dates">
+                    <div class="st-datepicker-inner__dates">
                         {item.map(d => <span onClick={() => this.onDateSelect(d.date)}>
                             {this.resolveDayView(d)}
                         </span>)}

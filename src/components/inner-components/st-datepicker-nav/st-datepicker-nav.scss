@@ -1,20 +1,20 @@
 st-datepicker-nav {
     width: 300px;
     cursor: pointer;
-    .nav {
+    .st-datepicker-nav {
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
         align-items: center;
         align-self: stretch;
 
-        .arrow-button {
+        &__arrow-button {
             opacity: .5;
             padding: 5px 15px;
             width: 50px;
         }
 
-        .current-date {
+        &__current {
             flex-grow: 1;
             font-size: 14px;
             font-weight: 600;

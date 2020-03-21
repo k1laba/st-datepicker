@@ -11,13 +11,13 @@ export class StRangeDatePickerHeader {
     @Prop() dateEnd?: Date;
 
     render() {
-        return (<div class="header">
-            <div class="item">
+        return (<div class="st-datepicker-range-header">
+            <div class="st-datepicker-range-header__item">
                 <span>Start date</span>
                 {this.dateStart && <span>{moment(this.dateStart).format('DD MMM YYYY')}</span>}
             </div>
-            <img src={FileHelper.getAssetUrl('forward.svg')} class="arrow-button"/>
-            <div class="item">
+            <img src={FileHelper.getAssetUrl('forward.svg')}/>
+            <div class="st-datepicker-range-header__item">
                 <span>End date</span>
                 {this.dateEnd && <span>{moment(this.dateEnd).format('DD MMM YYYY')}</span>}
             </div>

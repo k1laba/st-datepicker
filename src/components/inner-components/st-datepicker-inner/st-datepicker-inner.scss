@@ -1,14 +1,15 @@
 st-datepicker-inner {
-    .datepicker-inner {
-        .nav {
+    .st-datepicker-inner {
+        &.st-datepicker-nav {
             background-image: linear-gradient(rgba(222, 222, 222, .15), #fff);
         }
-        .week-names,
-        .dates {
+        &__weeks,
+        &__dates {
             display: flex;
             justify-content: center;
             flex-wrap: wrap;
             align-items: center;
+            color: rgba(0, 0, 0, 0.87);
 
             span {
                 width: 40px;
@@ -23,38 +24,37 @@ st-datepicker-inner {
                 line-height: normal;
                 letter-spacing: normal;
                 text-align: center;
-                color: rgba(0, 0, 0, 0.87);
                 cursor: pointer;
+            }
 
-                &.active {
-                    background-color: #1bd4aa;
-                    border-radius: 50%;
-                    color: #fff;
-                }
+            &--active {
+                background-color: #1bd4aa;
+                border-radius: 50%;
+                color: #fff;
+            }
 
-                &.in-range {
-                    background-color: #1BD4AAC0;
-                    border-radius: 0;
-                    color: #fff;
-                }
+            &--in-range {
+                background-color: #1BD4AAC0;
+                border-radius: 0;
+                color: #fff;
+            }
 
-                &.is-start {
-                    border-top-left-radius: 50%;
-                    border-bottom-left-radius: 50%;
-                    color: #fff;
-                    background-color: #1BD4AAC0;
-                }
+            &--is-start {
+                border-top-left-radius: 50%;
+                border-bottom-left-radius: 50%;
+                color: #fff;
+                background-color: #1BD4AAC0;
+            }
 
-                &.is-end {
-                    border-top-right-radius: 50%;
-                    border-bottom-right-radius: 50%;
-                    color: #fff;
-                    background-color: #1BD4AAC0;
-                }
+            &--is-end {
+                border-top-right-radius: 50%;
+                border-bottom-right-radius: 50%;
+                color: #fff;
+                background-color: #1BD4AAC0;
             }
         }
 
-        .header {
+        &__header {
             span {
                 color: rgba(0, 0, 0, 0.38);
             }
