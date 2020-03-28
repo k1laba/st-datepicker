@@ -91,7 +91,7 @@ export class StRangeDatePicker {
         this.showContent = this.open;
         this.initialDate = this.dateStart || new Date();
         this.dateStart = this.initialDate;
-        this.dateEnd = DateHelper.getNextDay(this.dateStart, 'd');
+        this.dateEnd = this.dateEnd || DateHelper.getNextDay(this.dateStart, 'd');
         this.currentMonth = this.dateEnd;
     }
 
