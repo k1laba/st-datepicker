@@ -1,9 +1,16 @@
 import moment, { MomentInput, DurationInputArg2 } from 'moment';
 import { IDatePickerModel } from '../models/date-picker.model';
 import { IDatePartModel } from "../models/date-part.model";
+import 'moment/src/locale/ka';
+import 'moment/src/locale/en-gb';
 
 export class DateHelper {
 
+  public static setLocale(locale: string): void {
+    if (locale) {
+      moment.locale(locale);
+    }
+  }
   public static getYearDataSource(from?: number, to?: number): IDatePartModel[] {
     const defaultFrom: number = new Date().getFullYear() - 10;
     const defaultTo: number = new Date().getFullYear();

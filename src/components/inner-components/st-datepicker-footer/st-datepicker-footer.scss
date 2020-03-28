@@ -6,7 +6,7 @@ st-datepicker-footer {
         padding-bottom: 15px;
         &__btn {
             cursor: pointer;
-            padding: 3px 20px;
+            padding: 3px 10px;
             font-size: 12px;
             font-weight: 600;
             font-stretch: normal;
@@ -16,6 +16,9 @@ st-datepicker-footer {
             text-align: center;
             color: #1bd4aa;
             text-transform: uppercase;
+            &:last-child {
+                padding-right: 20px;
+            }
         }
     }
 }

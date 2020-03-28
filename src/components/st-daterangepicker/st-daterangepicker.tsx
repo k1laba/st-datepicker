@@ -9,9 +9,12 @@ import moment from 'moment';
     shadow: false
 })
 export class StRangeDatePicker {
-    @Prop() dateStart?: Date;
-    @Prop() dateEnd?: Date;
+    @Prop() dateStart?: Date | number;
+    @Prop() dateEnd?: Date | number;
     @Prop() open: boolean;
+    @Prop() cancelLabel?: string
+    @Prop() okLabel?: string;
+    @Prop() locale?: string;
     @State() currentMonth: Date;
     @State() datepickerDates: IDatePickerModel[];
     @State() showContent: boolean;
@@ -36,8 +39,8 @@ export class StRangeDatePicker {
             toggleView={() => this.toggleView()}></st-datepicker-topnav>,
         this.showContent && <div class="st-datepicker-content">
             <st-daterangepicker-header
-                dateStart={this.dateStart}
-                dateEnd={this.dateEnd}>
+                dateStart={this.dateStart as Date}
+                dateEnd={this.dateEnd as Date}>
             </st-daterangepicker-header>
             <st-datepicker-inner
                 datepickerDates={this.datepickerDates}
@@ -47,6 +50,8 @@ export class StRangeDatePicker {
                 onMonthChange={(date: Date) => this.getDays(date)}>
             </st-datepicker-inner>
             <st-datepicker-footer
+                cancelLabel={this.cancelLabel}
+                okLabel={this.okLabel}
                 onCancel={() => this.toggleView()}
                 onApprove={() => this.approve()}>
             </st-datepicker-footer>
@@ -61,9 +66,9 @@ export class StRangeDatePicker {
     }
 
     private resolveDayView(d: IDatePickerModel) {
-        const isStart: boolean = d.isCurrentMonth && DateHelper.areDatesEqual(d.date, this.dateStart);
-        const isEnd: boolean = d.isCurrentMonth && DateHelper.areDatesEqual(d.date, this.dateEnd);
-        const isInRange: boolean = d.isCurrentMonth && d.text && DateHelper.isInRange(d.date, this.dateStart, this.dateEnd);
+        const isStart: boolean = d.isCurrentMonth && DateHelper.areDatesEqual(d.date, this.dateStart as Date);
+        const isEnd: boolean = d.isCurrentMonth && DateHelper.areDatesEqual(d.date, this.dateEnd as Date);
+        const isInRange: boolean = d.isCurrentMonth && d.text && DateHelper.isInRange(d.date, this.dateStart as Date, this.dateEnd as Date);
         const classPrefix: string = 'st-datepicker-inner__dates--';
         let parentClassName: string = '';
         let childClassName: string = '';
@@ -88,18 +93,19 @@ export class StRangeDatePicker {
     }
 
     private init() {
+        DateHelper.setLocale(this.locale);
         this.showContent = this.open;
-        this.initialDate = this.dateStart || new Date();
+        this.initialDate = new Date(this.dateStart || new Date());
         this.dateStart = this.initialDate;
-        this.dateEnd = this.dateEnd || DateHelper.getNextDay(this.dateStart, 'd');
-        this.currentMonth = this.dateEnd;
+        this.dateEnd = new Date(this.dateEnd || DateHelper.getNextDay(this.dateStart, 'd'));
+        this.currentMonth = this.dateEnd as Date;
     }
 
     private setCurrentDate(date?: Date) {
-        if (DateHelper.areDatesEqual(this.dateStart, date)) {
+        if (DateHelper.areDatesEqual(this.dateStart as Date, date)) {
             this.dateStart = null;
         }
-        else if (DateHelper.areDatesEqual(this.dateEnd, date)) {
+        else if (DateHelper.areDatesEqual(this.dateEnd as Date, date)) {
             this.dateEnd = null;
         }
         else if (!this.dateStart) {
@@ -112,8 +118,8 @@ export class StRangeDatePicker {
             this.dateEnd = date;
         }
         if (this.dateStart && this.dateEnd) {
-            const minDate = new Date(Math.min(this.dateStart.getTime(), this.dateEnd.getTime()));
-            const maxDate = new Date(Math.max(this.dateStart.getTime(), this.dateEnd.getTime()));
+            const minDate = new Date(Math.min((this.dateStart as Date).getTime(), (this.dateEnd as Date).getTime()));
+            const maxDate = new Date(Math.max((this.dateStart as Date).getTime(), (this.dateEnd as Date).getTime()));
             if (!DateHelper.areDatesEqual(minDate, maxDate)) {
                 this.dateStart = minDate;
                 this.dateEnd = maxDate;

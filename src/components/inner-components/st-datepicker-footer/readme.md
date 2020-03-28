@@ -7,10 +7,12 @@
 
 ## Properties
 
-| Property    | Attribute | Description | Type         | Default     |
-| ----------- | --------- | ----------- | ------------ | ----------- |
-| `onApprove` | --        |             | `() => void` | `undefined` |
-| `onCancel`  | --        |             | `() => void` | `undefined` |
+| Property      | Attribute      | Description | Type         | Default     |
+| ------------- | -------------- | ----------- | ------------ | ----------- |
+| `cancelLabel` | `cancel-label` |             | `string`     | `undefined` |
+| `okLabel`     | `ok-label`     |             | `string`     | `undefined` |
+| `onApprove`   | --             |             | `() => void` | `undefined` |
+| `onCancel`    | --             |             | `() => void` | `undefined` |
 
 
 ## Dependencies

@@ -7,11 +7,14 @@
 
 ## Properties
 
-| Property    | Attribute | Description | Type      | Default     |
-| ----------- | --------- | ----------- | --------- | ----------- |
-| `dateEnd`   | --        |             | `Date`    | `undefined` |
-| `dateStart` | --        |             | `Date`    | `undefined` |
-| `open`      | `open`    |             | `boolean` | `undefined` |
+| Property      | Attribute      | Description | Type             | Default     |
+| ------------- | -------------- | ----------- | ---------------- | ----------- |
+| `cancelLabel` | `cancel-label` |             | `string`         | `undefined` |
+| `dateEnd`     | `date-end`     |             | `Date \| number` | `undefined` |
+| `dateStart`   | `date-start`   |             | `Date \| number` | `undefined` |
+| `locale`      | `locale`       |             | `string`         | `undefined` |
+| `okLabel`     | `ok-label`     |             | `string`         | `undefined` |
+| `open`        | `open`         |             | `boolean`        | `undefined` |
 
 
 ## Events

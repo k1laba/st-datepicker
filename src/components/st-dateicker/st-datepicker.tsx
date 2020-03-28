@@ -9,10 +9,13 @@ import { IDatePickerModel } from '../../models/date-picker.model';
 })
 export class StSingleDatePicker {
 
-    @Prop() date: Date;
+    @Prop() date: Date | number;
     @Prop() open: boolean;
     @Prop() from?: number;
     @Prop() to?: number;
+    @Prop() cancelLabel?: string
+    @Prop() okLabel?: string;
+    @Prop() locale?: string;
     @State() currentDay: Date;
     @State() currentMonth: Date;
     @State() showContent: boolean;
@@ -21,17 +24,17 @@ export class StSingleDatePicker {
 
     componentWillLoad() {
         this.init();
-        this.getDays(this.date);
+        this.getDays(this.date as Date);
     }
 
     @Method()
     public async getDate(): Promise<Date> {
-        return await Promise.resolve(this.date);
+        return await Promise.resolve(this.date as Date);
     }
 
     render() {
         return [<st-datepicker-topnav
-            date={this.date}
+            date={this.date as Date}
             onDateChange={(date: Date) => this.handleTopNavigationChange(date)}
             toggleView={() => this.toggleView()}></st-datepicker-topnav>,
         this.showContent && <div class="st-datepicker-content">
@@ -49,6 +52,8 @@ export class StSingleDatePicker {
                 onMonthChange={(date: Date) => this.getDays(date)}>
             </st-datepicker-inner>
             <st-datepicker-footer
+                cancelLabel={this.cancelLabel}
+                okLabel={this.okLabel}
                 onCancel={() => this.cancel()}
                 onApprove={() => this.approve()}>
             </st-datepicker-footer>
@@ -61,8 +66,9 @@ export class StSingleDatePicker {
     }
 
     private init() {
+        DateHelper.setLocale(this.locale);
         this.showContent = this.open;
-        this.date = this.date || new Date();
+        this.date = new Date(this.date || new Date());
         this.currentDay = this.date;
         this.currentMonth = this.date;
     }
@@ -72,7 +78,7 @@ export class StSingleDatePicker {
         this.toggleView();
     }
     private setCurrentDate(date?: Date) {
-        this.currentDay = date || this.date;
+        this.currentDay = new Date(date || this.date);
         this.getDays(this.currentDay);
     }
 

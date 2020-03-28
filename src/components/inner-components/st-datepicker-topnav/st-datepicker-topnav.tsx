@@ -32,7 +32,7 @@ export class StDatePickerTopnav {
                 onDateChange={this.onDateChange}
                 toggleView={() => this.toggleView()}
                 renderDate={this.renderDate}
-                format="ddd DD MMMM YYYY"
+                format="ddd, DD MMM YYYY"
                 currentDate={this.date}></st-datepicker-nav>];
     }
 }

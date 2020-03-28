@@ -23,13 +23,18 @@ export namespace Components {
     'show': boolean;
   }
   interface StDatepicker {
-    'date': Date;
+    'cancelLabel'?: string;
+    'date': Date | number;
     'from'?: number;
     'getDate': () => Promise<Date>;
+    'locale'?: string;
+    'okLabel'?: string;
     'open': boolean;
     'to'?: number;
   }
   interface StDatepickerFooter {
+    'cancelLabel'?: string;
+    'okLabel'?: string;
     'onApprove': () => void;
     'onCancel': () => void;
   }
@@ -61,9 +66,12 @@ export namespace Components {
     'toggleView': () => void;
   }
   interface StDaterangepicker {
-    'dateEnd'?: Date;
-    'dateStart'?: Date;
+    'cancelLabel'?: string;
+    'dateEnd'?: Date | number;
+    'dateStart'?: Date | number;
     'getDateRange': () => Promise<any>;
+    'locale'?: string;
+    'okLabel'?: string;
     'open': boolean;
   }
   interface StDaterangepickerHeader {
@@ -150,13 +158,18 @@ declare namespace LocalJSX {
     'show'?: boolean;
   }
   interface StDatepicker {
-    'date'?: Date;
+    'cancelLabel'?: string;
+    'date'?: Date | number;
     'from'?: number;
+    'locale'?: string;
+    'okLabel'?: string;
     'onDateChanged'?: (event: CustomEvent<any>) => void;
     'open'?: boolean;
     'to'?: number;
   }
   interface StDatepickerFooter {
+    'cancelLabel'?: string;
+    'okLabel'?: string;
     'onApprove'?: () => void;
     'onCancel'?: () => void;
   }
@@ -188,8 +201,11 @@ declare namespace LocalJSX {
     'toggleView'?: () => void;
   }
   interface StDaterangepicker {
-    'dateEnd'?: Date;
-    'dateStart'?: Date;
+    'cancelLabel'?: string;
+    'dateEnd'?: Date | number;
+    'dateStart'?: Date | number;
+    'locale'?: string;
+    'okLabel'?: string;
     'onDateChanged'?: (event: CustomEvent<any>) => void;
     'open'?: boolean;
   }

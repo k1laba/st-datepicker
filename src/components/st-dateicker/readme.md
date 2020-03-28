@@ -7,12 +7,15 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type      | Default     |
-| -------- | --------- | ----------- | --------- | ----------- |
-| `date`   | --        |             | `Date`    | `undefined` |
-| `from`   | `from`    |             | `number`  | `undefined` |
-| `open`   | `open`    |             | `boolean` | `undefined` |
-| `to`     | `to`      |             | `number`  | `undefined` |
+| Property      | Attribute      | Description | Type             | Default     |
+| ------------- | -------------- | ----------- | ---------------- | ----------- |
+| `cancelLabel` | `cancel-label` |             | `string`         | `undefined` |
+| `date`        | `date`         |             | `Date \| number` | `undefined` |
+| `from`        | `from`         |             | `number`         | `undefined` |
+| `locale`      | `locale`       |             | `string`         | `undefined` |
+| `okLabel`     | `ok-label`     |             | `string`         | `undefined` |
+| `open`        | `open`         |             | `boolean`        | `undefined` |
+| `to`          | `to`           |             | `number`         | `undefined` |
 
 
 ## Events
