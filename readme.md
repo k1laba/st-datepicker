@@ -7,16 +7,10 @@ https://k1laba.github.io/st-datepicker/
 
 ## Installation
 
-You can install it using npm
+Add a script tag in your html
 
 ```
-  npm install @k1laba/st-datepicker --save
-```
-
-or manually add a script tag in your html
-
-```
-  <script src="https://unpkg.com/@k1laba/st-datepicker/dist/st-datepicker.js"></script>
+  <script type="module" src="https://unpkg.com/@k1laba/st-datepicker/dist/st-datepicker/st-datepicker.esm.js"></script>
 ```
 
 ## Examples

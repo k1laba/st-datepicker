@@ -1,6 +1,6 @@
 {
   "name": "@k1laba/st-datepicker",
-  "version": "1.6.0",
+  "version": "1.6.2",
   "description": "Datepicker web component implementation with Stenciljs",
   "author": "k1laba",
   "main": "dist/index.js",

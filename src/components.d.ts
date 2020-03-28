@@ -23,6 +23,7 @@ export namespace Components {
     'show': boolean;
   }
   interface StDatepicker {
+    'approved': (date: Date) => void;
     'cancelLabel'?: string;
     'date': Date | number;
     'from'?: number;
@@ -66,6 +67,7 @@ export namespace Components {
     'toggleView': () => void;
   }
   interface StDaterangepicker {
+    'approved': (start: Date, end: Date) => void;
     'cancelLabel'?: string;
     'dateEnd'?: Date | number;
     'dateStart'?: Date | number;
@@ -158,6 +160,7 @@ declare namespace LocalJSX {
     'show'?: boolean;
   }
   interface StDatepicker {
+    'approved'?: (date: Date) => void;
     'cancelLabel'?: string;
     'date'?: Date | number;
     'from'?: number;
@@ -201,6 +204,7 @@ declare namespace LocalJSX {
     'toggleView'?: () => void;
   }
   interface StDaterangepicker {
+    'approved'?: (start: Date, end: Date) => void;
     'cancelLabel'?: string;
     'dateEnd'?: Date | number;
     'dateStart'?: Date | number;

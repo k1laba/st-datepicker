@@ -16,6 +16,7 @@ export class StSingleDatePicker {
     @Prop() cancelLabel?: string
     @Prop() okLabel?: string;
     @Prop() locale?: string;
+    @Prop() approved: (date: Date) => void;
     @State() currentDay: Date;
     @State() currentMonth: Date;
     @State() showContent: boolean;
@@ -96,6 +97,9 @@ export class StSingleDatePicker {
         this.dateChanged.emit(this.date);
         if (toggle) {
             this.toggleView();
+        }
+        if (this.approved) {
+            this.approved(new Date(this.date));
         }
     }
     private getDays(date: Date): void {

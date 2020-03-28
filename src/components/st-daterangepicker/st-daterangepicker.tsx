@@ -15,6 +15,7 @@ export class StRangeDatePicker {
     @Prop() cancelLabel?: string
     @Prop() okLabel?: string;
     @Prop() locale?: string;
+    @Prop() approved: (start: Date, end: Date) => void;
     @State() currentMonth: Date;
     @State() datepickerDates: IDatePickerModel[];
     @State() showContent: boolean;
@@ -138,6 +139,9 @@ export class StRangeDatePicker {
             this.getDays(this.currentMonth);
             this.dateChanged.emit({ start: this.dateStart, end: this.dateEnd });
             this.toggleView();
+            if (this.approved) {
+                this.approved(new Date(this.dateStart), new Date(this.dateEnd));
+            }
         }
     }
     private getDays(date: Date): void {
