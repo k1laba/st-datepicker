@@ -16,7 +16,7 @@ export class StSingleDatePicker {
     @Prop() cancelLabel?: string
     @Prop() okLabel?: string;
     @Prop() locale?: string;
-    @Prop() approved: (date: Date) => void;
+    @Prop() onDateChange: (date: Date) => void;
     @State() currentDay: Date;
     @State() currentMonth: Date;
     @State() showContent: boolean;
@@ -62,7 +62,10 @@ export class StSingleDatePicker {
     }
 
     private resolveDayView(d: IDatePickerModel): string {
-        const className: string = DateHelper.areDatesEqual(d.date, this.currentDay) && 'st-datepicker-inner__dates--active';
+        let className: string = DateHelper.areDatesEqual(d.date, this.currentDay) && d.isCurrentMonth && d.text && 'st-datepicker-inner__dates--active';
+        if (d.isCurrentMonth && d.text && DateHelper.areDatesEqual(d.date, new Date())) {
+            className += ' st-datepicker-inner__dates--today';
+        }
         return <span class={className}>{d.isCurrentMonth && d.text}</span>;
     }
 
@@ -98,8 +101,8 @@ export class StSingleDatePicker {
         if (toggle) {
             this.toggleView();
         }
-        if (this.approved) {
-            this.approved(new Date(this.date));
+        if (this.onDateChange) {
+            this.onDateChange(new Date(this.date));
         }
     }
     private getDays(date: Date): void {

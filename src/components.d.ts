@@ -23,13 +23,13 @@ export namespace Components {
     'show': boolean;
   }
   interface StDatepicker {
-    'approved': (date: Date) => void;
     'cancelLabel'?: string;
     'date': Date | number;
     'from'?: number;
     'getDate': () => Promise<Date>;
     'locale'?: string;
     'okLabel'?: string;
+    'onDateChange': (date: Date) => void;
     'open': boolean;
     'to'?: number;
   }
@@ -67,13 +67,13 @@ export namespace Components {
     'toggleView': () => void;
   }
   interface StDaterangepicker {
-    'approved': (start: Date, end: Date) => void;
     'cancelLabel'?: string;
     'dateEnd'?: Date | number;
     'dateStart'?: Date | number;
     'getDateRange': () => Promise<any>;
     'locale'?: string;
     'okLabel'?: string;
+    'onDateChange': (start: Date, end: Date) => void;
     'open': boolean;
   }
   interface StDaterangepickerHeader {
@@ -160,12 +160,12 @@ declare namespace LocalJSX {
     'show'?: boolean;
   }
   interface StDatepicker {
-    'approved'?: (date: Date) => void;
     'cancelLabel'?: string;
     'date'?: Date | number;
     'from'?: number;
     'locale'?: string;
     'okLabel'?: string;
+    'onDateChange'?: (date: Date) => void;
     'onDateChanged'?: (event: CustomEvent<any>) => void;
     'open'?: boolean;
     'to'?: number;
@@ -204,12 +204,12 @@ declare namespace LocalJSX {
     'toggleView'?: () => void;
   }
   interface StDaterangepicker {
-    'approved'?: (start: Date, end: Date) => void;
     'cancelLabel'?: string;
     'dateEnd'?: Date | number;
     'dateStart'?: Date | number;
     'locale'?: string;
     'okLabel'?: string;
+    'onDateChange'?: (start: Date, end: Date) => void;
     'onDateChanged'?: (event: CustomEvent<any>) => void;
     'open'?: boolean;
   }

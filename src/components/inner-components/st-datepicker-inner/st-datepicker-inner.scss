@@ -32,6 +32,9 @@ st-datepicker-inner {
                 border-radius: 50%;
                 color: #fff;
             }
+            &--today {
+                border: 1px solid #dc3545;
+            }
 
             &--in-range {
                 background-color: #1BD4AAC0;

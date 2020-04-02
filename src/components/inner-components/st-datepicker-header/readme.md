@@ -19,7 +19,7 @@
 
 ### Used by
 
- - [st-datepicker](../../st-dateicker)
+ - [st-datepicker](../../st-datepicker)
 
 ### Depends on
 

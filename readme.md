@@ -40,6 +40,10 @@ get date from date picker:
   })();
 ```
 
+for more details on datepicker available parameters visit [st-datepicker](src/components/st-datepicker/readme.md)
+
+
+
 To show date range picker:
 
 ```
@@ -67,3 +71,5 @@ get date range from date range picker:
     rangeResultEl.innerHTML = rangeInfo.start.toDateString() + ' - ' + rangeInfo.end.toDateString();
   })();
 ```
+
+for more details on daterangepicker available parameters visit [st-daterangepicker](src/components/st-daterangepicker/readme.md)

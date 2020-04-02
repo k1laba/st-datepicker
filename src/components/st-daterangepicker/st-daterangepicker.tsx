@@ -15,7 +15,7 @@ export class StRangeDatePicker {
     @Prop() cancelLabel?: string
     @Prop() okLabel?: string;
     @Prop() locale?: string;
-    @Prop() approved: (start: Date, end: Date) => void;
+    @Prop() onDateChange: (start: Date, end: Date) => void;
     @State() currentMonth: Date;
     @State() datepickerDates: IDatePickerModel[];
     @State() showContent: boolean;
@@ -88,6 +88,9 @@ export class StRangeDatePicker {
             parentClassName = '';
             childClassName = 'active';
         }
+        if (d.isCurrentMonth && d.text && DateHelper.areDatesEqual(d.date, new Date())) {
+            childClassName += ` ${classPrefix}today`;
+        }
         return (<span class={classPrefix + parentClassName}>
             <span class={classPrefix + childClassName}>{d.isCurrentMonth && d.text}</span>
         </span>);
@@ -139,8 +142,8 @@ export class StRangeDatePicker {
             this.getDays(this.currentMonth);
             this.dateChanged.emit({ start: this.dateStart, end: this.dateEnd });
             this.toggleView();
-            if (this.approved) {
-                this.approved(new Date(this.dateStart), new Date(this.dateEnd));
+            if (this.onDateChange) {
+                this.onDateChange(new Date(this.dateStart), new Date(this.dateEnd));
             }
         }
     }

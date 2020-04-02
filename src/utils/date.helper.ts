@@ -21,7 +21,7 @@ export class DateHelper {
     return range.map(item => { return { name: item.toString(), value: item } });
   }
   public static getWeekDaysNames(): string[] {
-    return moment.weekdays().map((w) => w[0]);
+    return moment.weekdays().map((w) => w[0] + w[1]);
   }
   public static getMonthDataSource(): IDatePartModel[] {
     return moment.monthsShort().map((m: string, index: number) => { return { name: m, value: index } });
