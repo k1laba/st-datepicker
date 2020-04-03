@@ -1,7 +1,6 @@
 import { Component, h, Prop } from "@stencil/core";
 import { DateHelper } from "../../../utils/date.helper";
 import moment from "moment";
-import { FileHelper } from "../../../utils/file.helper";
 
 @Component({
     tag: 'st-datepicker-nav',
@@ -19,15 +18,13 @@ export class StDatePickerNav {
     render() {
         return (
             <div class="st-datepicker-nav">
-                {!!this.onDateChange && <img class="st-datepicker-nav__arrow-button" src={FileHelper.getAssetUrl('back.svg')}
-                    onClick={() => this.onDateChange(DateHelper.getPrevDay(this.currentDate, this.navStep))} />
-                }
+                {!!this.onDateChange && <st-back-icon class="st-datepicker-nav__arrow-button"
+                    onClick={() => this.onDateChange(DateHelper.getPrevDay(this.currentDate, this.navStep))}></st-back-icon>}
                 <div onClick={() => this.toggleView && this.toggleView()}
                     class="st-datepicker-nav__current">{this.renderDate ? this.renderDate() : moment(this.currentDate).format(this.format)}
                 </div>
-                {!!this.onDateChange && <img class="st-datepicker-nav__arrow-button"
-                    onClick={() => this.onDateChange(DateHelper.getNextDay(this.currentDate, this.navStep))}
-                    src={FileHelper.getAssetUrl('forward.svg')}/>}
+                {!!this.onDateChange && <st-forward-icon class="st-datepicker-nav__arrow-button"
+                    onClick={() => this.onDateChange(DateHelper.getNextDay(this.currentDate, this.navStep))}></st-forward-icon>}
             </div>
         );
     }

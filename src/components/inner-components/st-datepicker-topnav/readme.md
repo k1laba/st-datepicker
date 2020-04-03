@@ -24,12 +24,16 @@
 
 ### Depends on
 
+- [st-calendar-icon](../../icons)
 - [st-datepicker-nav](../st-datepicker-nav)
 
 ### Graph
 ```mermaid
 graph TD;
+  st-datepicker-topnav --> st-calendar-icon
   st-datepicker-topnav --> st-datepicker-nav
+  st-datepicker-nav --> st-back-icon
+  st-datepicker-nav --> st-forward-icon
   st-datepicker --> st-datepicker-topnav
   st-daterangepicker --> st-datepicker-topnav
   style st-datepicker-topnav fill:#f9f,stroke:#333,stroke-width:4px

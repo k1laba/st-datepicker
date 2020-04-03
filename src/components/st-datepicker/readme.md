@@ -55,7 +55,11 @@ graph TD;
   st-datepicker --> st-datepicker-header
   st-datepicker --> st-datepicker-inner
   st-datepicker --> st-datepicker-footer
+  st-datepicker-topnav --> st-calendar-icon
   st-datepicker-topnav --> st-datepicker-nav
+  st-datepicker-nav --> st-back-icon
+  st-datepicker-nav --> st-forward-icon
+  st-datepicker-header --> st-down-icon
   st-datepicker-header --> st-date-part-selector
   st-datepicker-inner --> st-datepicker-nav
   style st-datepicker fill:#f9f,stroke:#333,stroke-width:4px

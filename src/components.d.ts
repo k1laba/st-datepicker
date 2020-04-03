@@ -15,6 +15,8 @@ import {
 } from './models/date-picker.model';
 
 export namespace Components {
+  interface StBackIcon {}
+  interface StCalendarIcon {}
   interface StDatePartSelector {
     'dataSource': IDatePartModel[];
     'date': Date;
@@ -80,10 +82,24 @@ export namespace Components {
     'dateEnd'?: Date;
     'dateStart'?: Date;
   }
+  interface StDownIcon {}
+  interface StForwardIcon {}
 }
 
 declare global {
 
+
+  interface HTMLStBackIconElement extends Components.StBackIcon, HTMLStencilElement {}
+  var HTMLStBackIconElement: {
+    prototype: HTMLStBackIconElement;
+    new (): HTMLStBackIconElement;
+  };
+
+  interface HTMLStCalendarIconElement extends Components.StCalendarIcon, HTMLStencilElement {}
+  var HTMLStCalendarIconElement: {
+    prototype: HTMLStCalendarIconElement;
+    new (): HTMLStCalendarIconElement;
+  };
 
   interface HTMLStDatePartSelectorElement extends Components.StDatePartSelector, HTMLStencilElement {}
   var HTMLStDatePartSelectorElement: {
@@ -138,7 +154,21 @@ declare global {
     prototype: HTMLStDaterangepickerHeaderElement;
     new (): HTMLStDaterangepickerHeaderElement;
   };
+
+  interface HTMLStDownIconElement extends Components.StDownIcon, HTMLStencilElement {}
+  var HTMLStDownIconElement: {
+    prototype: HTMLStDownIconElement;
+    new (): HTMLStDownIconElement;
+  };
+
+  interface HTMLStForwardIconElement extends Components.StForwardIcon, HTMLStencilElement {}
+  var HTMLStForwardIconElement: {
+    prototype: HTMLStForwardIconElement;
+    new (): HTMLStForwardIconElement;
+  };
   interface HTMLElementTagNameMap {
+    'st-back-icon': HTMLStBackIconElement;
+    'st-calendar-icon': HTMLStCalendarIconElement;
     'st-date-part-selector': HTMLStDatePartSelectorElement;
     'st-datepicker': HTMLStDatepickerElement;
     'st-datepicker-footer': HTMLStDatepickerFooterElement;
@@ -148,10 +178,14 @@ declare global {
     'st-datepicker-topnav': HTMLStDatepickerTopnavElement;
     'st-daterangepicker': HTMLStDaterangepickerElement;
     'st-daterangepicker-header': HTMLStDaterangepickerHeaderElement;
+    'st-down-icon': HTMLStDownIconElement;
+    'st-forward-icon': HTMLStForwardIconElement;
   }
 }
 
 declare namespace LocalJSX {
+  interface StBackIcon {}
+  interface StCalendarIcon {}
   interface StDatePartSelector {
     'dataSource'?: IDatePartModel[];
     'date'?: Date;
@@ -217,8 +251,12 @@ declare namespace LocalJSX {
     'dateEnd'?: Date;
     'dateStart'?: Date;
   }
+  interface StDownIcon {}
+  interface StForwardIcon {}
 
   interface IntrinsicElements {
+    'st-back-icon': StBackIcon;
+    'st-calendar-icon': StCalendarIcon;
     'st-date-part-selector': StDatePartSelector;
     'st-datepicker': StDatepicker;
     'st-datepicker-footer': StDatepickerFooter;
@@ -228,6 +266,8 @@ declare namespace LocalJSX {
     'st-datepicker-topnav': StDatepickerTopnav;
     'st-daterangepicker': StDaterangepicker;
     'st-daterangepicker-header': StDaterangepickerHeader;
+    'st-down-icon': StDownIcon;
+    'st-forward-icon': StForwardIcon;
   }
 }
 
@@ -237,6 +277,8 @@ export { LocalJSX as JSX };
 declare module "@stencil/core" {
   export namespace JSX {
     interface IntrinsicElements {
+      'st-back-icon': LocalJSX.StBackIcon & JSXBase.HTMLAttributes<HTMLStBackIconElement>;
+      'st-calendar-icon': LocalJSX.StCalendarIcon & JSXBase.HTMLAttributes<HTMLStCalendarIconElement>;
       'st-date-part-selector': LocalJSX.StDatePartSelector & JSXBase.HTMLAttributes<HTMLStDatePartSelectorElement>;
       'st-datepicker': LocalJSX.StDatepicker & JSXBase.HTMLAttributes<HTMLStDatepickerElement>;
       'st-datepicker-footer': LocalJSX.StDatepickerFooter & JSXBase.HTMLAttributes<HTMLStDatepickerFooterElement>;
@@ -246,6 +288,8 @@ declare module "@stencil/core" {
       'st-datepicker-topnav': LocalJSX.StDatepickerTopnav & JSXBase.HTMLAttributes<HTMLStDatepickerTopnavElement>;
       'st-daterangepicker': LocalJSX.StDaterangepicker & JSXBase.HTMLAttributes<HTMLStDaterangepickerElement>;
       'st-daterangepicker-header': LocalJSX.StDaterangepickerHeader & JSXBase.HTMLAttributes<HTMLStDaterangepickerHeaderElement>;
+      'st-down-icon': LocalJSX.StDownIcon & JSXBase.HTMLAttributes<HTMLStDownIconElement>;
+      'st-forward-icon': LocalJSX.StForwardIcon & JSXBase.HTMLAttributes<HTMLStForwardIconElement>;
     }
   }
 }

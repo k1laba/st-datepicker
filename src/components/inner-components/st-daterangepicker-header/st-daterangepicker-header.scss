@@ -38,6 +38,11 @@ st-daterangepicker-header {
                 font-size: 14px;
                 line-height: 1.5;
             }
+
+            &--forward {
+                width: 30px;
+                opacity: .5;
+            }
         }
     }
 }
