@@ -7,11 +7,14 @@ https://k1laba.github.io/st-datepicker/
 
 ## Installation
 
-Add a script tag in your html
+Add a script tags in your html
 
 ```
   <script type="module" src="https://unpkg.com/@k1laba/st-datepicker/dist/st-datepicker/st-datepicker.esm.js"></script>
+  <script nomodule="" src="https://unpkg.com/@k1laba/st-datepicker/dist/st-datepicker/st-datepicker.js"></script>
 ```
+
+only one of them will be loaded for users
 
 ## Examples
 

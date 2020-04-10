@@ -47,7 +47,7 @@ export class StRangeDatePicker {
                 datepickerDates={this.datepickerDates}
                 resolveDayView={(d: IDatePickerModel) => this.resolveDayView(d)}
                 currentMonth={this.currentMonth}
-                onDateSelect={(date: Date) => this.setCurrentDate(date)}
+                onDateSelect={(date: Date) => this.handleDateSelect(date)}
                 onMonthChange={(date: Date) => this.getDays(date)}>
             </st-datepicker-inner>
             <st-datepicker-footer
@@ -105,32 +105,26 @@ export class StRangeDatePicker {
         this.currentMonth = this.dateEnd as Date;
     }
 
-    private setCurrentDate(date?: Date) {
-        if (DateHelper.areDatesEqual(this.dateStart as Date, date)) {
-            this.dateStart = null;
-        }
-        else if (DateHelper.areDatesEqual(this.dateEnd as Date, date)) {
-            this.dateEnd = null;
-        }
-        else if (!this.dateStart) {
-            this.dateStart = date;
-        }
-        else if (!this.dateEnd) {
-            this.dateEnd = date;
-        }
-        else {
-            this.dateEnd = date;
-        }
-        if (this.dateStart && this.dateEnd) {
-            const minDate = new Date(Math.min((this.dateStart as Date).getTime(), (this.dateEnd as Date).getTime()));
-            const maxDate = new Date(Math.max((this.dateStart as Date).getTime(), (this.dateEnd as Date).getTime()));
-            if (!DateHelper.areDatesEqual(minDate, maxDate)) {
-                this.dateStart = minDate;
-                this.dateEnd = maxDate;
-            }
-        }
+    private handleDateSelect(date: Date): void {
+        this.setDateRange(date);
         this.currentMonth = date;
         this.getDays(this.currentMonth);
+    }
+
+    private setDateRange(date: Date): void {
+        if (DateHelper.areDatesEqual(this.dateStart as Date, date)) {
+            this.dateStart = null;
+            return;
+        }
+        if (DateHelper.areDatesEqual(this.dateEnd as Date, date)) {
+            this.dateEnd = null;
+            return;
+        }
+        if (!this.dateStart || date < this.dateStart) {
+            this.dateStart = date;
+            return;
+        }
+        this.dateEnd = date;
     }
 
     private toggleView(): void {
