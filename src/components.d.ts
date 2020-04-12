@@ -34,6 +34,7 @@ export namespace Components {
     'onDateChange': (date: Date) => void;
     'open': boolean;
     'to'?: number;
+    'width': number;
   }
   interface StDatepickerFooter {
     'cancelLabel'?: string;
@@ -50,6 +51,7 @@ export namespace Components {
   interface StDatepickerInner {
     'currentMonth': Date;
     'datepickerDates': IDatePickerModel[];
+    'itemSize': number;
     'onDateSelect': (date: Date) => void;
     'onMonthChange': (date: Date) => void;
     'resolveDayView': (date: IDatePickerModel) => string;
@@ -77,6 +79,7 @@ export namespace Components {
     'okLabel'?: string;
     'onDateChange': (start: Date, end: Date) => void;
     'open': boolean;
+    'width': number;
   }
   interface StDaterangepickerHeader {
     'dateEnd'?: Date;
@@ -203,6 +206,7 @@ declare namespace LocalJSX {
     'onDateChanged'?: (event: CustomEvent<any>) => void;
     'open'?: boolean;
     'to'?: number;
+    'width'?: number;
   }
   interface StDatepickerFooter {
     'cancelLabel'?: string;
@@ -219,6 +223,7 @@ declare namespace LocalJSX {
   interface StDatepickerInner {
     'currentMonth'?: Date;
     'datepickerDates'?: IDatePickerModel[];
+    'itemSize'?: number;
     'onDateSelect'?: (date: Date) => void;
     'onMonthChange'?: (date: Date) => void;
     'resolveDayView'?: (date: IDatePickerModel) => string;
@@ -246,6 +251,7 @@ declare namespace LocalJSX {
     'onDateChange'?: (start: Date, end: Date) => void;
     'onDateChanged'?: (event: CustomEvent<any>) => void;
     'open'?: boolean;
+    'width'?: number;
   }
   interface StDaterangepickerHeader {
     'dateEnd'?: Date;

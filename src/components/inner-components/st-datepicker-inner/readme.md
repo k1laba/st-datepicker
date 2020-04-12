@@ -7,13 +7,14 @@
 
 ## Properties
 
-| Property          | Attribute | Description | Type                                 | Default     |
-| ----------------- | --------- | ----------- | ------------------------------------ | ----------- |
-| `currentMonth`    | --        |             | `Date`                               | `undefined` |
-| `datepickerDates` | --        |             | `IDatePickerModel[]`                 | `undefined` |
-| `onDateSelect`    | --        |             | `(date: Date) => void`               | `undefined` |
-| `onMonthChange`   | --        |             | `(date: Date) => void`               | `undefined` |
-| `resolveDayView`  | --        |             | `(date: IDatePickerModel) => string` | `undefined` |
+| Property          | Attribute   | Description | Type                                 | Default     |
+| ----------------- | ----------- | ----------- | ------------------------------------ | ----------- |
+| `currentMonth`    | --          |             | `Date`                               | `undefined` |
+| `datepickerDates` | --          |             | `IDatePickerModel[]`                 | `undefined` |
+| `itemSize`        | `item-size` |             | `number`                             | `undefined` |
+| `onDateSelect`    | --          |             | `(date: Date) => void`               | `undefined` |
+| `onMonthChange`   | --          |             | `(date: Date) => void`               | `undefined` |
+| `resolveDayView`  | --          |             | `(date: IDatePickerModel) => string` | `undefined` |
 
 
 ## Dependencies

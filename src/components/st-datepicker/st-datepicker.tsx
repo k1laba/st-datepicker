@@ -1,4 +1,4 @@
-import { Component, h, State, Prop, Method, EventEmitter, Event } from '@stencil/core';
+import { Component, h, State, Prop, Method, EventEmitter, Event, Host } from '@stencil/core';
 import { DateHelper } from '../../utils/date.helper';
 import { IDatePickerModel } from '../../models/date-picker.model';
 
@@ -9,6 +9,7 @@ import { IDatePickerModel } from '../../models/date-picker.model';
 })
 export class StSingleDatePicker {
 
+    @Prop() width: number = 300;
     @Prop() date: Date | number;
     @Prop() open: boolean;
     @Prop() from?: number;
@@ -34,37 +35,41 @@ export class StSingleDatePicker {
     }
 
     render() {
-        return [<st-datepicker-topnav
-            date={this.date as Date}
-            onDateChange={(date: Date) => this.handleTopNavigationChange(date)}
-            toggleView={() => this.toggleView()}></st-datepicker-topnav>,
-        this.showContent && <div class="st-datepicker-content">
-            <st-datepicker-header
-                currentDay={this.currentDay}
-                yearFrom={this.from}
-                yearTo={this.to}
-                onDateChange={(date) => this.setCurrentDate(date)}>
-            </st-datepicker-header>
-            <st-datepicker-inner
-                datepickerDates={this.datepickerDates}
-                currentMonth={this.currentMonth}
-                resolveDayView={(d: IDatePickerModel) => this.resolveDayView(d)}
-                onDateSelect={(date: Date) => this.setCurrentDate(date)}
-                onMonthChange={(date: Date) => this.getDays(date)}>
-            </st-datepicker-inner>
-            <st-datepicker-footer
-                cancelLabel={this.cancelLabel}
-                okLabel={this.okLabel}
-                onCancel={() => this.cancel()}
-                onApprove={() => this.approve()}>
-            </st-datepicker-footer>
-        </div>];
+        return <Host style={{ 'max-width': `${this.width}px` }}>
+            <st-datepicker-topnav
+                date={this.date as Date}
+                onDateChange={(date: Date) => this.handleTopNavigationChange(date)}
+                toggleView={() => this.toggleView()}></st-datepicker-topnav>
+            {this.showContent && <div class="st-datepicker-content">
+                <st-datepicker-header
+                    currentDay={this.currentDay}
+                    yearFrom={this.from}
+                    yearTo={this.to}
+                    onDateChange={(date) => this.setCurrentDate(date)}>
+                </st-datepicker-header>
+                <st-datepicker-inner
+                    itemSize={this.width / 8}
+                    datepickerDates={this.datepickerDates}
+                    currentMonth={this.currentMonth}
+                    resolveDayView={(d: IDatePickerModel) => this.resolveDayView(d)}
+                    onDateSelect={(date: Date) => this.setCurrentDate(date)}
+                    onMonthChange={(date: Date) => this.getDays(date)}>
+                </st-datepicker-inner>
+                <st-datepicker-footer
+                    cancelLabel={this.cancelLabel}
+                    okLabel={this.okLabel}
+                    onCancel={() => this.cancel()}
+                    onApprove={() => this.approve()}>
+                </st-datepicker-footer>
+            </div>}
+        </Host>;
     }
 
     private resolveDayView(d: IDatePickerModel): string {
-        let className: string = DateHelper.areDatesEqual(d.date, this.currentDay) && d.isCurrentMonth && d.text && 'st-datepicker-inner__dates--active';
+        let className: string = DateHelper.areDatesEqual(d.date, this.currentDay)
+            && d.isCurrentMonth && d.text && 'st-datepicker-inner__dates__item--active';
         if (d.isCurrentMonth && d.text && DateHelper.areDatesEqual(d.date, new Date())) {
-            className += ' st-datepicker-inner__dates--today';
+            className += ' st-datepicker-inner__dates__item--today';
         }
         return <span class={className}>{d.isCurrentMonth && d.text}</span>;
     }

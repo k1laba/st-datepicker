@@ -16,6 +16,7 @@
 | `okLabel`      | `ok-label`     |             | `string`                           | `undefined` |
 | `onDateChange` | --             |             | `(start: Date, end: Date) => void` | `undefined` |
 | `open`         | `open`         |             | `boolean`                          | `undefined` |
+| `width`        | `width`        |             | `number`                           | `300`       |
 
 
 ## Events

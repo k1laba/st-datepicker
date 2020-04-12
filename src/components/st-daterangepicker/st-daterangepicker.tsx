@@ -1,4 +1,4 @@
-import { Component, h, State, Prop, Method, EventEmitter, Event } from '@stencil/core';
+import { Component, h, State, Prop, Method, EventEmitter, Event, Host } from '@stencil/core';
 import { IDatePickerModel } from '../../models/date-picker.model';
 import { DateHelper } from '../../utils/date.helper';
 import moment from 'moment';
@@ -9,6 +9,7 @@ import moment from 'moment';
     shadow: false
 })
 export class StRangeDatePicker {
+    @Prop() width: number = 300;
     @Prop() dateStart?: Date | number;
     @Prop() dateEnd?: Date | number;
     @Prop() open: boolean;
@@ -34,29 +35,32 @@ export class StRangeDatePicker {
     }
 
     render() {
-        return [<st-datepicker-topnav
-            date={this.initialDate}
-            renderDate={() => this.renderDate()}
-            toggleView={() => this.toggleView()}></st-datepicker-topnav>,
-        this.showContent && <div class="st-datepicker-content">
-            <st-daterangepicker-header
-                dateStart={this.dateStart as Date}
-                dateEnd={this.dateEnd as Date}>
-            </st-daterangepicker-header>
-            <st-datepicker-inner
-                datepickerDates={this.datepickerDates}
-                resolveDayView={(d: IDatePickerModel) => this.resolveDayView(d)}
-                currentMonth={this.currentMonth}
-                onDateSelect={(date: Date) => this.handleDateSelect(date)}
-                onMonthChange={(date: Date) => this.getDays(date)}>
-            </st-datepicker-inner>
-            <st-datepicker-footer
-                cancelLabel={this.cancelLabel}
-                okLabel={this.okLabel}
-                onCancel={() => this.toggleView()}
-                onApprove={() => this.approve()}>
-            </st-datepicker-footer>
-        </div>];
+        return <Host style={{ 'max-width': `${this.width}px` }}>
+            <st-datepicker-topnav
+                date={this.initialDate}
+                renderDate={() => this.renderDate()}
+                toggleView={() => this.toggleView()}></st-datepicker-topnav>
+            {this.showContent && <div class="st-datepicker-content">
+                <st-daterangepicker-header
+                    dateStart={this.dateStart as Date}
+                    dateEnd={this.dateEnd as Date}>
+                </st-daterangepicker-header>
+                <st-datepicker-inner
+                    itemSize={this.width/8}
+                    datepickerDates={this.datepickerDates}
+                    resolveDayView={(d: IDatePickerModel) => this.resolveDayView(d)}
+                    currentMonth={this.currentMonth}
+                    onDateSelect={(date: Date) => this.handleDateSelect(date)}
+                    onMonthChange={(date: Date) => this.getDays(date)}>
+                </st-datepicker-inner>
+                <st-datepicker-footer
+                    cancelLabel={this.cancelLabel}
+                    okLabel={this.okLabel}
+                    onCancel={() => this.toggleView()}
+                    onApprove={() => this.approve()}>
+                </st-datepicker-footer>
+            </div>}
+        </Host>;
     }
 
     private renderDate(): string {
@@ -70,7 +74,7 @@ export class StRangeDatePicker {
         const isStart: boolean = d.isCurrentMonth && DateHelper.areDatesEqual(d.date, this.dateStart as Date);
         const isEnd: boolean = d.isCurrentMonth && DateHelper.areDatesEqual(d.date, this.dateEnd as Date);
         const isInRange: boolean = d.isCurrentMonth && d.text && DateHelper.isInRange(d.date, this.dateStart as Date, this.dateEnd as Date);
-        const classPrefix: string = 'st-datepicker-inner__dates--';
+        const classPrefix: string = 'st-datepicker-inner__dates__item--';
         let parentClassName: string = '';
         let childClassName: string = '';
         if (isInRange) {
@@ -91,8 +95,10 @@ export class StRangeDatePicker {
         if (d.isCurrentMonth && d.text && DateHelper.areDatesEqual(d.date, new Date())) {
             childClassName += ` ${classPrefix}today`;
         }
-        return (<span class={classPrefix + parentClassName}>
-            <span class={classPrefix + childClassName}>{d.isCurrentMonth && d.text}</span>
+        const parentClassNameValue: string = parentClassName ? classPrefix + parentClassName : '';
+        const childClassNameValue: string = childClassName ? classPrefix + childClassName : '';
+        return (<span class={parentClassNameValue}>
+            <span class={childClassNameValue}>{d.isCurrentMonth && d.text}</span>
         </span>);
     }
 

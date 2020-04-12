@@ -17,6 +17,7 @@
 | `onDateChange` | --             |             | `(date: Date) => void` | `undefined` |
 | `open`         | `open`         |             | `boolean`              | `undefined` |
 | `to`           | `to`           |             | `number`               | `undefined` |
+| `width`        | `width`        |             | `number`               | `300`       |
 
 
 ## Events

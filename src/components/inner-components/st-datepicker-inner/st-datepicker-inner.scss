@@ -3,6 +3,7 @@ st-datepicker-inner {
         &.st-datepicker-nav {
             background-image: linear-gradient(rgba(222, 222, 222, .15), #fff);
         }
+
         &__weeks,
         &__dates {
             display: flex;
@@ -11,12 +12,7 @@ st-datepicker-inner {
             align-items: center;
             color: rgba(0, 0, 0, 0.87);
 
-            span {
-                width: 40px;
-                height: 40px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
+            &__item {
                 font-size: 12px;
                 font-weight: 600;
                 font-stretch: normal;
@@ -25,35 +21,44 @@ st-datepicker-inner {
                 letter-spacing: normal;
                 text-align: center;
                 cursor: pointer;
-            }
 
-            &--active {
-                background-color: #1bd4aa;
-                border-radius: 50%;
-                color: #fff;
-            }
-            &--today {
-                border: 1px solid #dc3545;
-            }
+                * {
+                    width: 100%;
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
 
-            &--in-range {
-                background-color: #1BD4AAC0;
-                border-radius: 0;
-                color: #fff;
-            }
+                &--active {
+                    background-color: #1bd4aa;
+                    border-radius: 50%;
+                    color: #fff;
+                }
 
-            &--is-start {
-                border-top-left-radius: 50%;
-                border-bottom-left-radius: 50%;
-                color: #fff;
-                background-color: #1BD4AAC0;
-            }
+                &--today {
+                    border: 1px solid #dc3545;
+                }
 
-            &--is-end {
-                border-top-right-radius: 50%;
-                border-bottom-right-radius: 50%;
-                color: #fff;
-                background-color: #1BD4AAC0;
+                &--in-range {
+                    background-color: #1BD4AAC0;
+                    border-radius: 0;
+                    color: #fff;
+                }
+
+                &--is-start {
+                    border-top-left-radius: 50%;
+                    border-bottom-left-radius: 50%;
+                    color: #fff;
+                    background-color: #1BD4AAC0;
+                }
+
+                &--is-end {
+                    border-top-right-radius: 50%;
+                    border-bottom-right-radius: 50%;
+                    color: #fff;
+                    background-color: #1BD4AAC0;
+                }
             }
         }
 
